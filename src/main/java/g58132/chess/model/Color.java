@@ -8,7 +8,8 @@ package g58132.chess.model;
  * @author elhar
  */
 public enum Color {
-    WHITE, BLACK,;
+    WHITE, BLACK
+    ;
 
     /**
      * Color opposite
@@ -23,3 +24,4 @@ public enum Color {
     }
 
 }
+
