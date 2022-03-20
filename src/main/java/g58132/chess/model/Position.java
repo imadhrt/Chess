@@ -1,7 +1,7 @@
 package g58132.chess.model;
 
 /**
- * Represents the position on the game board
+ * Represents the position on the game board.
  *
  * @author elhar
  */
@@ -13,7 +13,7 @@ public class Position {
     /**
      * Constructor of position
      *
-     * Allows to initialize the row and column attributes to values
+     * Allows to initialize the row and column attributes to values.
      *
      * @param row is a position in the board
      * @param column is a position in the board
