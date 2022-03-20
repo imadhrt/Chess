@@ -2,7 +2,7 @@ package g58132.chess.model;
 
 /**
  *
- * Represent the color of a player, of a square, or of a piece of the chess
+ * Represents the color of a player, of a square, or of a piece of the chess
  * game.
  *
  * @author elhar

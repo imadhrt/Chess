@@ -1,7 +1,7 @@
 package g58132.chess.model;
 
 /**
- * Represent the direction of a piece on the board.
+ * Represents the direction of a piece on the board.
  *
  * @author elhar
  */

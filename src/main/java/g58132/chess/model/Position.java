@@ -1,7 +1,7 @@
 package g58132.chess.model;
 
 /**
- * Represent the position on the game board
+ * Represents the position on the game board
  *
  * @author elhar
  */
