@@ -16,7 +16,6 @@ public class Piece {
      *
      * @param color is color of the piece
      */
-
     public Piece(Color color) {
         this.color = color;
     }
@@ -26,9 +25,8 @@ public class Piece {
      *
      * Allows access to the value of the color attribute.
      *
-     * @return the color 
+     * @return the color
      */
-
     public Color getColor() {
         return this.color;
     }

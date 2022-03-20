@@ -43,11 +43,10 @@ public class Square {
     }
 
     /**
-     * Checks free box
+     * Check free box
      *
      * @return true if the box is empty (null) and false if the box is not empty
      */
-
     public boolean isFree() {
         return (this == null);
     }
