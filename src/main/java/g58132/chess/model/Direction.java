@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
 package g58132.chess.model;
 
 /**
@@ -10,14 +6,14 @@ package g58132.chess.model;
  * @author elhar
  */
 public enum Direction {
-    NW(1,-1), 
-    N(1,0),
-    NE(1,-1),
-    W(0,-1),
-    E(0,1),
-    SW(-1,-1),
-    S(-1,0),
-    SE(-1,1);
+    NW(1, -1),
+    N(1, 0),
+    NE(1, 1),
+    W(0, -1),
+    E(0, 1),
+    SW(-1, -1),
+    S(-1, 0),
+    SE(-1, 1);
     private int deltaRow;
     private int deltaColumn;
 

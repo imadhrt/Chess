@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package g58132.chess.model;
 
 /**
@@ -34,7 +30,6 @@ public class Position {
      *
      * @return the value of the row attribute
      */
-
     public int getRow() {
         return this.row;
     }
@@ -46,9 +41,49 @@ public class Position {
      *
      * @return the value of the column attribute
      */
-
     public int getColumn() {
         return this.column;
+    }
+
+    /**
+     * New position oh the piece
+     *
+     * @param dir is the direction of the piece
+     *
+     * @return a new position on the board
+     */
+    public Position next(Direction dir) {
+
+        return new Position(this.row + dir.getDeltaRow(), this.column + dir.getDeltaColumn());
+    }
+
+    /**
+     * Equals
+     *
+     * Allows to compare if the two object are equals.
+     *
+     * @param obj is an object
+     * @return true if theys are equals and false if they are not equals
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Position other = (Position) obj;
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        return true;
     }
 
 }
