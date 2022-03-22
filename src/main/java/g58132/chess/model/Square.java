@@ -20,7 +20,10 @@ public class Square {
         this.piece = piece;
     }
 
-    
+    public Square() {
+        this.piece = null;
+
+    }
 
     /**
      * Accessor of piece
@@ -50,7 +53,7 @@ public class Square {
      * @return true if the box is empty (null) and false if the box is not empty
      */
     public boolean isFree() {
-        return (this == null);
+        return (this.piece == null);
     }
 
 }

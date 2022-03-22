@@ -13,9 +13,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseNW() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.NW);
+        Position result = position1.next(Direction.NW);
         Position expResult = new Position(5, 3);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -23,9 +23,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseN() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.N);
+        Position result = position1.next(Direction.N);
         Position expResult = new Position(5, 4);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -33,9 +33,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseNE() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.NE);
+        Position result = position1.next(Direction.NE);
         Position expResult = new Position(5, 5);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -43,9 +43,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseW() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.W);
+        Position result = position1.next(Direction.W);
         Position expResult = new Position(4, 3);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -53,9 +53,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseE() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.E);
+        Position result = position1.next(Direction.E);
         Position expResult = new Position(4, 5);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -63,9 +63,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseSW() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.SW);
+        Position result = position1.next(Direction.SW);
         Position expResult = new Position(3, 3);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -73,9 +73,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseS() {
         System.out.println("next");
         Position position1 = new Position(5, 4);
-        Position position2 = position1.next(Direction.S);
+        Position result = position1.next(Direction.S);
         Position expResult = new Position(4, 4);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
@@ -83,9 +83,9 @@ public class PositionTest {
     public void testNextCaseDirectionCaseSE() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
-        Position position2 = position1.next(Direction.SE);
+        Position result = position1.next(Direction.SE);
         Position expResult = new Position(3, 5);
-        assertEquals(expResult, position2);
+        assertEquals(expResult, result);
 
     }
 
