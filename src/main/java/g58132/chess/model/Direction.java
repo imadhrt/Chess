@@ -25,9 +25,9 @@ public enum Direction {
      * @param deltaRow is a deltaRow in the board
      * @param deltaColumn is a deltaColumn in the board
      */
-    private Direction(int deltaRow, int deltaColumn) {
-        this.deltaRow = deltaRow;
-        this.deltaColumn = deltaColumn;
+    private Direction(int deltaR, int deltaC) {
+        this.deltaRow = deltaR;
+        this.deltaColumn = deltaC;
     }
 
     /**

@@ -20,6 +20,8 @@ public class Square {
         this.piece = piece;
     }
 
+    
+
     /**
      * Accessor of piece
      *
@@ -28,7 +30,7 @@ public class Square {
      * @return the value of the piece
      */
     public Piece getPiece() {
-        return piece;
+        return this.piece;
     }
 
     /**

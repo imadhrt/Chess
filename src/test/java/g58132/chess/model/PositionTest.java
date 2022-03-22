@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PositionTest {
 
     @Test
-    public void testNextCaseDirectionNW() {
+    public void testNextCaseDirectionCaseNW() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.NW);
@@ -20,7 +20,7 @@ public class PositionTest {
     }
 
     @Test
-    public void testNextCaseDirectionN() {
+    public void testNextCaseDirectionCaseN() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.N);
@@ -30,7 +30,7 @@ public class PositionTest {
     }
 
     @Test
-    public void testNextCaseDirectionNE() {
+    public void testNextCaseDirectionCaseNE() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.NE);
@@ -40,7 +40,7 @@ public class PositionTest {
     }
 
     @Test
-    public void testNextCaseDirectionW() {
+    public void testNextCaseDirectionCaseW() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.W);
@@ -50,7 +50,7 @@ public class PositionTest {
     }
 
     @Test
-    public void testNextCaseDirectionE() {
+    public void testNextCaseDirectionCaseE() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.E);
@@ -60,7 +60,7 @@ public class PositionTest {
     }
 
     @Test
-    public void testNextCaseDirectionSW() {
+    public void testNextCaseDirectionCaseSW() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.SW);
@@ -70,17 +70,17 @@ public class PositionTest {
     }
 
     @Test
-    public void testNextCaseDirectionS() {
+    public void testNextCaseDirectionCaseS() {
         System.out.println("next");
-        Position position1 = new Position(4, 4);
+        Position position1 = new Position(5, 4);
         Position position2 = position1.next(Direction.S);
-        Position expResult = new Position(3, 4);
+        Position expResult = new Position(4, 4);
         assertEquals(expResult, position2);
 
     }
 
     @Test
-    public void testNextCaseDirectionSE() {
+    public void testNextCaseDirectionCaseSE() {
         System.out.println("next");
         Position position1 = new Position(4, 4);
         Position position2 = position1.next(Direction.SE);

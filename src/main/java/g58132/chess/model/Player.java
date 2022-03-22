@@ -26,9 +26,8 @@ public class Player {
      *
      * @return the color
      */
-
     public Color getColor() {
-        return color;
+        return this.color;
     }
 
 }
