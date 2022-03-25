@@ -20,6 +20,9 @@ public class Square {
         this.piece = piece;
     }
 
+    /**
+     * constructor whitout parameter which puts a piece at null
+     */
     public Square() {
         this.piece = null;
 

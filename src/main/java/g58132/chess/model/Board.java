@@ -23,10 +23,10 @@ public class Board {
         this.squares = new Square[8][8];
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
-                squares[i][j]=new Square();
-                
+                squares[i][j] = new Square();
+              
             }
-            
+
         }
 
     }
@@ -163,7 +163,6 @@ public class Board {
      * @param player is a color player
      * @return the list of all positions occupied by the given player
      */
-
     public List<Position> getPositionOccupiedBy(Player player) {
         List<Position> joueurOccupe = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
