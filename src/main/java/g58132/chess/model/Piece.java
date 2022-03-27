@@ -33,18 +33,18 @@ public class Piece {
     public Color getColor() {
         return this.color;
     }
-    /**
-     * 
-     *  movement of piece on the board
-     * 
-     * Allows to add all the possible position on the board.
-     * 
-     * @param position is a position of a piece on the board
-     * @param board is a game board 
-     * @return a list of all possible positions of a move for a pawn
-     * in a given position
-     */
 
+    /**
+     *
+     * movement of piece on the board
+     *
+     * Allows to add all the possible position on the board.
+     *
+     * @param position is a position of a piece on the board
+     * @param board is a game board
+     * @return a list of all possible positions of a move for a pawn in a given
+     * position
+     */
     public List<Position> getPossibleMoves(Position position, Board board) {
         List<Position> positionPossible = new ArrayList();
         positionPossible.addAll(movesNorthOrSouth(position, board));
@@ -82,14 +82,14 @@ public class Piece {
                     && //premiere case libre
                     board.isFree(position.next(Direction.N).next(Direction.N))
                     &&// deuxième case libre
-                    board.getInitialPawnRow(color) == 1) { //position initiale
+                    board.getInitialPawnRow(color.WHITE) == position.getRow()) { //position initiale
                 listePosition.add(position.next(Direction.N).next(Direction.N));
 
             }
         } else {
             if (board.isFree(position.next(Direction.S))
                     && board.isFree(position.next(Direction.S))
-                    && board.getInitialPawnRow(color) == 6) {
+                    && board.getInitialPawnRow(color.BLACK) == position.getRow()) {
                 listePosition.add(position.next(Direction.S).next(Direction.S));
 
             }
@@ -128,11 +128,14 @@ public class Piece {
         return listePosition;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
+    /**
+     * Equals
+     *
+     * Allows to compare if the two object are equals.
+     *
+     * @param obj is an object
+     * @return true if theys are equals and false if they are not equals
+     */
 
     @Override
     public boolean equals(Object obj) {
@@ -151,6 +154,5 @@ public class Piece {
         }
         return true;
     }
-    
 
 }

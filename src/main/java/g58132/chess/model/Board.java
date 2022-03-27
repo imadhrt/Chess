@@ -53,12 +53,12 @@ public class Board {
      * @return 6 if the color is black and 1 if the color is white
      */
     public int getInitialPawnRow(Color color) {
-        int numeroCouleur = 1;
+        int pionPosInitial = 1;
         if (color == Color.BLACK) {
-            numeroCouleur = 6;
+            pionPosInitial = 6;
 
         }
-        return numeroCouleur;
+        return pionPosInitial;
     }
 
     /**
@@ -123,6 +123,10 @@ public class Board {
      * @throw pos if the position is not on the board
      */
     public boolean isFree(Position pos) {
+         if (!contains(pos)) {
+            throw new IllegalArgumentException("La position n'est pas sur le "
+                    + "plateau!!!  ");
+        }
 
         return squares[pos.getRow()][pos.getColumn()].isFree();
     }
