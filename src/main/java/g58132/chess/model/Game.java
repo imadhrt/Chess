@@ -36,10 +36,11 @@ public class Game implements Model {
             board.setPiece(pieceNoir, positionNoir);
 
         }
-        this.currentPlayer = white;
+        this.currentPlayer = this.white;
 
     }
 
+    
     /**
      * Get the piece of the board located on a given position
      *
@@ -136,8 +137,9 @@ public class Game implements Model {
      */
     @Override
     public boolean isGameOver() {
-        return board.getPositionOccupiedBy(black).size() != 0 //si liste pas vide
-                || board.getPositionOccupiedBy(white).size() != 0;
+        return !board.getPositionOccupiedBy(black).isEmpty() //si liste pas vide
+        
+                || !board.getPositionOccupiedBy(white).isEmpty();
 
     }
 

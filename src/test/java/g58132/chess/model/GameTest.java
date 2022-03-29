@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
+
 package g58132.chess.model;
 
 import java.util.List;
@@ -25,6 +22,9 @@ public class GameTest {
         System.out.println("start");
         Game instance = new Game();
         instance.start();
+        
+        
+        
    
     }
 
@@ -34,9 +34,10 @@ public class GameTest {
     @Test
     public void testGetPiece() {
         System.out.println("getPiece");
-        Position pos = null;
+        Position pos = new Position(1, 0);
         Game instance = new Game();
-        Piece expResult = null;
+        instance.start();//place les pieces en ligne
+        Piece expResult = new Piece(Color.WHITE);
         Piece result = instance.getPiece(pos);
         assertEquals(expResult, result);
         
@@ -46,10 +47,13 @@ public class GameTest {
      * Test of getCurrentPlayer method, of class Game.
      */
     @Test
+
+
     public void testGetCurrentPlayer() {
         System.out.println("getCurrentPlayer");
         Game instance = new Game();
-        Player expResult = null;
+         instance.start();
+        Player expResult = new Player(Color.WHITE) ;
         Player result = instance.getCurrentPlayer();
         assertEquals(expResult, result);
      
@@ -62,7 +66,8 @@ public class GameTest {
     public void testGetOppositePlayer() {
         System.out.println("getOppositePlayer");
         Game instance = new Game();
-        Player expResult = null;
+        instance.start();
+        Player expResult = new Player(Color.BLACK);
         Player result = instance.getOppositePlayer();
         assertEquals(expResult, result);
         
@@ -74,26 +79,15 @@ public class GameTest {
     @Test
     public void testIsCurrentPlayerPosition() {
         System.out.println("isCurrentPlayerPosition");
-        Position pos = null;
+        Position pos = new Position(1, 5);
         Game instance = new Game();
+        instance.start();
         boolean expResult = false;
         boolean result = instance.isCurrentPlayerPosition(pos);
         assertEquals(expResult, result);
        
     }
 
-    /**
-     * Test of movePiecePosition method, of class Game.
-     */
-    @Test
-    public void testMovePiecePosition() {
-        System.out.println("movePiecePosition");
-        Position oldPos = null;
-        Position newPos = null;
-        Game instance = new Game();
-        instance.movePiecePosition(oldPos, newPos);
-     
-    }
 
     /**
      * Test of isGameOver method, of class Game.
@@ -102,7 +96,8 @@ public class GameTest {
     public void testIsGameOver() {
         System.out.println("isGameOver");
         Game instance = new Game();
-        boolean expResult = false;
+        instance.start();
+        boolean expResult = true;
         boolean result = instance.isGameOver();
         assertEquals(expResult, result);
        
@@ -114,9 +109,14 @@ public class GameTest {
     @Test
     public void testGetPossibleMoves() {
         System.out.println("getPossibleMoves");
-        Position position = null;
+        Position position = new Position(6, 1);
         Game instance = new Game();
-        List<Position> expResult = null;
+        instance.start();
+        List<Position> expResult = List.of(
+                new Position(5, 1),
+                new Position(4, 1)
+        
+        );
         List<Position> result = instance.getPossibleMoves(position);
         assertEquals(expResult, result);
       
