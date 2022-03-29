@@ -2,6 +2,7 @@ package g58132.chess.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents the piece on the game.
@@ -49,13 +50,9 @@ public class Piece {
 
         List<Position> positionPossible = new ArrayList();
 
-//try{
         positionPossible.addAll(movesNorthOrSouth(position, board));
         positionPossible.addAll(moveTwoCaseSouthOrNorth(position, board));
         positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board));
-//}catch( IllegalArgumentException e){
-//        
-//    }
 
         return positionPossible;
     }
@@ -72,6 +69,7 @@ public class Piece {
      */
     private List<Position> movesNorthOrSouth(Position position, Board board) {
         List<Position> listePosition = new ArrayList();
+
         if (color.equals(Color.WHITE)) {
             /**
              * verifie si à la position du plateau la case est blanc cela
@@ -82,7 +80,8 @@ public class Piece {
                 listePosition.add(position.next(Direction.N));
 
             }
-        } else {
+        }
+        if (color.equals(Color.BLACK)) {
             if (board.contains(position.next(Direction.S)) && board.isFree(position.next(Direction.S))) {
                 listePosition.add(position.next(Direction.S));
             }
@@ -112,12 +111,18 @@ public class Piece {
                     && //premiere case libre
                     board.isFree(position.next(Direction.N).next(Direction.N)) // deuxième case libre
                     ) {
+
                 listePosition.add(position.next(Direction.N).next(Direction.N));
 
+            }else{
+                return listePosition;
             }
-        } else {
+            
+        }
+        if (color.equals(Color.BLACK)) {
             if (board.isFree(position.next(Direction.S))
-                    && board.isFree(position.next(Direction.S))) {
+                    && board.isFree(position.next(Direction.S).next(Direction.S))) {
+
                 listePosition.add(position.next(Direction.S).next(Direction.S));
 
             }
@@ -152,7 +157,8 @@ public class Piece {
 
             }
 
-        } else {
+        }
+        if (color.equals(Color.BLACK)) {
             if ((board.contains(position.next(Direction.SW)) && !board.isFree(position.next(Direction.SW)))
                     && board.containsOppositeColor(position.next(Direction.SW), color)) {
                 listePosition.add(position.next(Direction.SW));
@@ -194,4 +200,12 @@ public class Piece {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.color);
+        return hash;
+    }
+
 }
+

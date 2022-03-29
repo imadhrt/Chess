@@ -962,14 +962,18 @@ public class PieceTest {
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
         Position position2 = new Position(4, 7);
-        Piece piece2 = new Piece(Color.WHITE);
+        Piece piece2 = new Piece(Color.BLACK);
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of(
                 new Position(5, 7)
+                
+                
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
+        System.out.println(expected);
+        System.out.println(positions);
        
 
         assertEqualsIgnoringOrder(expected, positions);
