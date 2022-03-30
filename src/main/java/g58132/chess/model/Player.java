@@ -39,6 +39,15 @@ public class Player {
         return hash;
     }
 
+    /**
+     * Equals
+     *
+     * Allows to compare if the two object are equals.
+     *
+     * @param obj is an object
+     * @return true if theys are equals and false if they are not equals
+     */
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -56,6 +65,5 @@ public class Player {
         }
         return true;
     }
-    
 
 }

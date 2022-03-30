@@ -13,6 +13,12 @@ public class Game implements Model {
     private Player white;
     private Player black;
     private Player currentPlayer;
+    /**
+     * Constructor of game
+     * 
+     * Allows to initialise attribute to instance (value)
+     * 
+     */
 
     public Game() {
         this.white = new Player(Color.WHITE);
@@ -40,7 +46,6 @@ public class Game implements Model {
 
     }
 
-    
     /**
      * Get the piece of the board located on a given position
      *
@@ -137,9 +142,9 @@ public class Game implements Model {
      */
     @Override
     public boolean isGameOver() {
-        return !board.getPositionOccupiedBy(black).isEmpty() //si liste pas vide
-        
-                || !board.getPositionOccupiedBy(white).isEmpty();
+        return board.getPositionOccupiedBy(black).isEmpty() //si liste pas vide
+
+                || board.getPositionOccupiedBy(white).isEmpty();
 
     }
 
@@ -152,7 +157,7 @@ public class Game implements Model {
     @Override
     public List<Position> getPossibleMoves(Position position) {
         return this.board.getPiece(position).getPossibleMoves(position, board);
-        
+
     }
 
     @Override
@@ -164,6 +169,15 @@ public class Game implements Model {
         hash = 97 * hash + Objects.hashCode(this.currentPlayer);
         return hash;
     }
+
+    /**
+     * Equals
+     *
+     * Allows to compare if the two object are equals.
+     *
+     * @param obj is an object
+     * @return true if theys are equals and false if they are not equals
+     */
 
     @Override
     public boolean equals(Object obj) {
@@ -191,6 +205,5 @@ public class Game implements Model {
         }
         return true;
     }
-    
 
 }
