@@ -77,12 +77,23 @@ public class GameTest {
      * Test of isCurrentPlayerPosition method, of class Game.
      */
     @Test
-    public void testIsCurrentPlayerPosition() {
+    public void testIsNotCurrentPlayerPosition() {
         System.out.println("isCurrentPlayerPosition");
-        Position pos = new Position(6, 6);
+        Position pos = new Position(6, 1);
         Game instance = new Game();
         instance.start();
         boolean expResult = false;
+        boolean result = instance.isCurrentPlayerPosition(pos);
+        assertEquals(expResult, result);
+       
+    }
+    @Test
+    public void testIsCurrentPlayerPosition1() {
+        System.out.println("isCurrentPlayerPosition");
+        Position pos = new Position(1, 1);
+        Game instance = new Game();
+        instance.start();
+        boolean expResult = true;
         boolean result = instance.isCurrentPlayerPosition(pos);
         assertEquals(expResult, result);
        

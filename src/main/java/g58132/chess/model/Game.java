@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * represents an action on the game and shows the state of the game
  *
  * @author elhar
  */
@@ -13,13 +14,13 @@ public class Game implements Model {
     private Player white;
     private Player black;
     private Player currentPlayer;
+
     /**
      * Constructor of game
-     * 
+     *
      * Allows to initialise attribute to instance (value)
-     * 
+     *
      */
-
     public Game() {
         this.white = new Player(Color.WHITE);
         this.black = new Player(Color.BLACK);
@@ -100,7 +101,7 @@ public class Game implements Model {
             throw new IllegalArgumentException("La position n'est pas sur le"
                     + " plateau ");
         }
-        return this.board.getPiece(pos).getColor()==currentPlayer.getColor();
+        return this.board.getPiece(pos).getColor() == currentPlayer.getColor();
     }
 
     /**
@@ -122,14 +123,24 @@ public class Game implements Model {
             throw new IllegalArgumentException("La position n'est pas sur le "
                     + "plateau.");
         }
-        if (getPiece(oldPos) == null
-                || getPiece(oldPos).getColor() != currentPlayer.getColor()
-                || board.getPiece(oldPos).getPossibleMoves(oldPos, board).contains(newPos)) {
-            throw new IllegalArgumentException("La nouvelle position du plateau "
-                    + "n'est pas valide ");
+        if (board.isFree(oldPos)) {
+            throw new IllegalArgumentException("la position  ne "
+                    + " contient pas de pièce");
         }
+        if (getPiece(oldPos).getColor() != currentPlayer.getColor()) {
+            throw new IllegalArgumentException("La piece n'appartient pas au "
+                    + " joueur actuel");
+        }
+        if (!getPossibleMoves(oldPos).contains(newPos)) {
+            throw new IllegalArgumentException("Le coup n'est pas valable pour "
+                    + " la pièce située à la position actuel  ");
+
+        }
+
+
         this.board.setPiece(getPiece(oldPos), newPos);
-        while (!isGameOver()) {
+        this.board.dropPiece(oldPos);
+        if(!isGameOver()) {
             this.currentPlayer = getOppositePlayer();
         }
 
@@ -142,9 +153,16 @@ public class Game implements Model {
      */
     @Override
     public boolean isGameOver() {
-        return board.getPositionOccupiedBy(black).isEmpty() //si liste pas vide
+        List<Position> listePos = this.board.getPositionOccupiedBy(this.currentPlayer);
+        boolean gameOver = false;
+        for (int i = 0; i < listePos.size(); i++) {
+            Position pos = listePos.get(i);
+            gameOver = this.getPiece(pos).getPossibleMoves(pos, board).isEmpty();
 
-                || board.getPositionOccupiedBy(white).isEmpty();
+        }
+        return gameOver ;
+
+               
 
     }
 
@@ -178,7 +196,6 @@ public class Game implements Model {
      * @param obj is an object
      * @return true if theys are equals and false if they are not equals
      */
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
