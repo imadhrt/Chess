@@ -98,9 +98,9 @@ public class Game implements Model {
     public boolean isCurrentPlayerPosition(Position pos) {
         if (!board.contains(pos)) {
             throw new IllegalArgumentException("La position n'est pas sur le"
-                    + "plateau ");
+                    + " plateau ");
         }
-        return this.board.containsOppositeColor(pos, this.currentPlayer.getColor());
+        return this.board.getPiece(pos).getColor()==currentPlayer.getColor();
     }
 
     /**

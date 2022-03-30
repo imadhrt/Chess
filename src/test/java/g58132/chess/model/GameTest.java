@@ -79,7 +79,7 @@ public class GameTest {
     @Test
     public void testIsCurrentPlayerPosition() {
         System.out.println("isCurrentPlayerPosition");
-        Position pos = new Position(1, 5);
+        Position pos = new Position(6, 6);
         Game instance = new Game();
         instance.start();
         boolean expResult = false;
@@ -97,7 +97,7 @@ public class GameTest {
         System.out.println("isGameOver");
         Game instance = new Game();
         instance.start();
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = instance.isGameOver();
         assertEquals(expResult, result);
        

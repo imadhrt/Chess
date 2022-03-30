@@ -2,6 +2,7 @@ package g58132.chess.view;
 
 import g58132.chess.model.Color;
 import g58132.chess.model.Model;
+import g58132.chess.model.Piece;
 import g58132.chess.model.Player;
 import g58132.chess.model.Position;
 import java.util.ArrayList;
@@ -50,6 +51,35 @@ public class TextView implements View {
      */
     @Override
     public void displayBoard() {
+        int ligne = 7;//ligne du tableau
+        int colonne = 0;//colonne du tableau
+        System.out.println(" ".repeat(3) + "-".repeat(40));
+        for (int i = 8; i > 0; i--) { //i est la ligne de l'echequier
+            System.out.print(i + "  |");//j est la colonne d'echquier
+            for (int j = 0; j < 8; j++) {
+                if (colonne == 8) {
+                    ligne--;
+                    colonne = 0;
+
+                }
+                Position pos = new Position(ligne, colonne);
+                Piece piece = model.getPiece(pos);
+                if (piece == null) {
+                    System.out.print(" ".repeat(4) + "|");
+                } else if (Color.WHITE == piece.getColor()) {
+                    System.out.print(" PB |");
+                } else {
+                    System.out.print(" PN |");
+                }
+
+                colonne++;
+
+            }
+            System.out.println("");
+            System.out.println(" ".repeat(3) + "-".repeat(40));
+
+        }
+        System.out.println(" ".repeat(5) + "a    b    c    d    e    f    g    h");
 
     }
 
