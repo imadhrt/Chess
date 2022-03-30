@@ -5,6 +5,7 @@ import g58132.chess.model.Model;
 import g58132.chess.model.Piece;
 import g58132.chess.model.Player;
 import g58132.chess.model.Position;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -88,10 +89,18 @@ public class TextView implements View {
     public void displayWinner() {
         if (model.isGameOver()) {
             Player gagnant = model.getOppositePlayer();
-            System.out.println("Le gagnant de la partie est le joueur" + gagnant);
+            if(gagnant.getColor().equals(Color.BLACK)){
+            System.out.println("Le gagnant de la partie est le joueur NOIR" );
+            }else{
+            System.out.println("Le gagnant de la partie est le joueur BLANC" );
+                
+            }
         }
 
     }
+
+   
+    
 
     /**
      * Displays a message inviting the current player (white or black) to play.
@@ -237,5 +246,31 @@ public class TextView implements View {
         System.out.println(message);
 
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.model);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TextView other = (TextView) obj;
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }
