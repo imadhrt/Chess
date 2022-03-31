@@ -27,10 +27,10 @@ public class Controller {
         this.view = view;
 
     }
+
     /**
      * allows to control the game
      */
-    
 
     public void play() {
         boolean gameIsOver = false;
@@ -44,14 +44,18 @@ public class Controller {
             System.out.println("Entrez une position de départ");
             Position oldPosition = view.askPosition();
 
-        System.out.println("Entrez la position d'arriver");
+            System.out.println("Entrez la position d'arriver");
             Position newPosition = view.askPosition();
-//            try{
+            try{
+                
+            
+
             game.movePiecePosition(oldPosition, newPosition);
-//            }catch(Exception e){
-//               view.askPosition();
-//                
-//            }
+            }catch(Exception e){
+                
+                System.out.println(e.getMessage());
+            }
+          
             if (game.isGameOver()) {
                 gameIsOver = true;
             }
