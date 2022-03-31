@@ -55,7 +55,7 @@ public class TextView implements View {
         System.out.println(" ".repeat(3) + "-".repeat(40));
         for (int i = 8; i > 0; i--) { //i est la ligne de l'echequier
             System.out.print(i + "  |");//j est la colonne d'echquier
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j <= 7; j++) {
                 if (colonne == 8) {
                     ligne--;
                     colonne = 0;
@@ -89,18 +89,15 @@ public class TextView implements View {
     public void displayWinner() {
         if (model.isGameOver()) {
             Player gagnant = model.getOppositePlayer();
-            if(gagnant.getColor().equals(Color.BLACK)){
-            System.out.println("Le gagnant de la partie est le joueur NOIR" );
-            }else{
-            System.out.println("Le gagnant de la partie est le joueur BLANC" );
-                
+            if (gagnant.getColor().equals(Color.BLACK)) {
+                System.out.println("Le gagnant de la partie est le joueur NOIR");
+            } else {
+                System.out.println("Le gagnant de la partie est le joueur BLANC");
+
             }
         }
 
     }
-
-   
-    
 
     /**
      * Displays a message inviting the current player (white or black) to play.
@@ -271,6 +268,5 @@ public class TextView implements View {
         }
         return true;
     }
-    
 
 }

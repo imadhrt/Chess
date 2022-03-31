@@ -154,10 +154,13 @@ public class Game implements Model {
     @Override
     public boolean isGameOver() {
         List<Position> listePos = this.board.getPositionOccupiedBy(this.currentPlayer);
-        boolean gameOver = false;
-        for (int i = 0; i < listePos.size(); i++) {
+        boolean gameOver = true;
+        for (int i = 0; i < listePos.size() && gameOver; i++) {
             Position pos = listePos.get(i);
-            gameOver = this.getPiece(pos).getPossibleMoves(pos, board).isEmpty();
+       if(  !this.getPossibleMoves(pos).isEmpty()){
+           gameOver=false;
+           
+       }
 
         }
         return gameOver ;

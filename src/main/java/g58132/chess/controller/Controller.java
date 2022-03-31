@@ -43,9 +43,15 @@ public class Controller {
             view.displayPlayer();
             System.out.println("Entrez une position de départ");
             Position oldPosition = view.askPosition();
-            System.out.println("Entrez la position d'arriver");
+
+        System.out.println("Entrez la position d'arriver");
             Position newPosition = view.askPosition();
+//            try{
             game.movePiecePosition(oldPosition, newPosition);
+//            }catch(Exception e){
+//               view.askPosition();
+//                
+//            }
             if (game.isGameOver()) {
                 gameIsOver = true;
             }
