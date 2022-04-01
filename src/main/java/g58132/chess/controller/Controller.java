@@ -40,10 +40,10 @@ public class Controller {
         while (!gameIsOver) {
             view.displayBoard();
             view.displayPlayer();
-            System.out.println("Entrez une position de départ");
+            System.out.println("Entrez une position de DEPART");
             Position oldPosition = view.askPosition();
 
-            System.out.println("Entrez la position d'arriver");
+            System.out.println("Entrez la position d'ARRIVER");
             Position newPosition = view.askPosition();
             try {
 

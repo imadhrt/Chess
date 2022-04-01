@@ -50,18 +50,12 @@ public class TextView implements View {
      */
     @Override
     public void displayBoard() {
-        int ligne = 7;//ligne du tableau
-        int colonne = 0;//colonne du tableau
-        System.out.println(" ".repeat(3) + "-".repeat(40));
+        System.out.println(" ".repeat(3) + "-".repeat(41));
         for (int i = 8; i > 0; i--) { //i est la ligne de l'echequier
             System.out.print(i + "  |");//j est la colonne d'echquier
             for (int j = 0; j <= 7; j++) {
-                if (colonne == 8) {
-                    ligne--;
-                    colonne = 0;
-
-                }
-                Position pos = new Position(ligne, colonne);
+               
+                Position pos = new Position(i-1, j);
                 Piece piece = model.getPiece(pos);
                 if (piece == null) {
                     System.out.print(" ".repeat(4) + "|");
@@ -71,11 +65,10 @@ public class TextView implements View {
                     System.out.print(" PN |");
                 }
 
-                colonne++;
 
             }
             System.out.println("");
-            System.out.println(" ".repeat(3) + "-".repeat(40));
+            System.out.println(" ".repeat(3) + "-".repeat(41));
 
         }
         System.out.println(" ".repeat(5) + "a    b    c    d    e    f    g    h");
@@ -105,10 +98,10 @@ public class TextView implements View {
     @Override
     public void displayPlayer() {
         if (model.getCurrentPlayer().getColor().equals(Color.WHITE)) {
-            System.out.println("Vous pouvez jouer le joueur BLANC ");
+            System.out.println("***Vous pouvez jouer le joueur BLANC*** ");
 
         } else {
-            System.out.println("Vous pouvez jouer le joueur NOIR ");
+            System.out.println("***Vous pouvez jouer le joueur NOIR*** ");
         }
 
     }
@@ -163,8 +156,8 @@ public class TextView implements View {
 
         while (ligne < min || ligne > max) {
             System.out.println("La valeur n'est pas entre 1 et "
-                    + " 8!!!!!");
-            System.out.println("Veuillez entrer un nombre compris entre 1 et 8:");
+                    + " 8 !!!!!");
+            System.out.println("Veuillez entrer un nombre compris entre 1 et 8 :");
             ligne = LectutreRobusteEntier();
         }
         return ligne;
@@ -181,7 +174,7 @@ public class TextView implements View {
      */
     private static String lectureRobusteString() {
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Entrez une colonne ( a à h):");
+        System.out.println("Entrez une colonne ('a' à 'h'):");
         String colonne = clavier.nextLine().toLowerCase();
 
         while (colonne.length() != 1 || !Character.isLetter(colonne.charAt(0))) {

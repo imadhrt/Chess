@@ -6,6 +6,7 @@ import g58132.chess.model.Model;
 import g58132.chess.view.TextView;
 
 /**
+ * launching of the game
  *
  * @author elhar
  */
