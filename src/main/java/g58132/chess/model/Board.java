@@ -17,14 +17,14 @@ public class Board {
     /**
      * Constructor whitout parameter
      *
-     * Initialize the the game board
+     * Initialize the game board
      */
     public Board() {
         this.squares = new Square[8][8];
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
                 squares[i][j] = new Square();
-              
+
             }
 
         }
@@ -81,7 +81,7 @@ public class Board {
     }
 
     /**
-     * Accessor piece
+     * Accessory piece
      *
      * Allows access to the value of the piece in the given position.
      *
@@ -123,7 +123,7 @@ public class Board {
      * @throw pos if the position is not on the board
      */
     public boolean isFree(Position pos) {
-         if (!contains(pos)) {
+        if (!contains(pos)) {
             throw new IllegalArgumentException("La position n'est pas sur le "
                     + "plateau!!!  ");
         }
@@ -186,10 +186,10 @@ public class Board {
     /**
      * Equals
      *
-     * Allows to compare if the two object are equals.
+     * Allows to compare if the two objects are equals.
      *
      * @param obj is an object
-     * @return true if theys are equals and false if they are not equals
+     * @return true if theys are equal and false if they are not equals
      */
     @Override
     public boolean equals(Object obj) {
@@ -207,6 +207,13 @@ public class Board {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Arrays.deepHashCode(this.squares);
+        return hash;
     }
 
 }

@@ -36,7 +36,6 @@ public interface View {
      *
      * @return a valid position
      */
-
     public Position askPosition();
 
     /**
@@ -44,7 +43,6 @@ public interface View {
      *
      * @param message is an error message
      */
-
     public void displayError(String message);
 
 }

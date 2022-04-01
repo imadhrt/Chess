@@ -3,6 +3,7 @@ package g58132.chess.model;
 import java.util.Objects;
 
 /**
+ * Represents the color of the player.
  *
  * @author elhar
  */
@@ -22,7 +23,7 @@ public class Player {
     }
 
     /**
-     * Accessor of the color
+     * Accessory of the color
      *
      * Allows access to the value oh the color attribute.
      *
@@ -42,12 +43,11 @@ public class Player {
     /**
      * Equals
      *
-     * Allows to compare if the two object are equals.
+     * Allows to compare if the two objects are equals.
      *
      * @param obj is an object
      * @return true if theys are equals and false if they are not equals
      */
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

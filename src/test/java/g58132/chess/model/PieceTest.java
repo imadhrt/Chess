@@ -336,7 +336,6 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-      
 
         assertEqualsIgnoringOrder(expected, positions);
     }
@@ -357,10 +356,10 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-      
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     @Test
     public void testGet1pionsAdversaireEnDiagonalEt2PionDevantMoi() {
         Position position = new Position(1, 7);
@@ -381,10 +380,10 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-       
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     @Test
     public void testGet1pionAdverseDevantMoi() {
         Position position = new Position(1, 7);
@@ -394,15 +393,13 @@ public class PieceTest {
         Piece piece2 = new Piece(Color.BLACK);
         board.setPiece(piece2, position2);
 
-        List<Position> expected = List.of(
-                
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-  
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     @Test
     public void testGet1pionAdverse2CaseDevantMoi() {
         Position position = new Position(1, 7);
@@ -417,12 +414,12 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-       
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     //test other  position (getRow !=1)
-     @Test
+    @Test
     public void testGet1pionAdverseMilieu() {
         Position position = new Position(4, 4);
         Piece piece = new Piece(Color.WHITE);
@@ -432,51 +429,42 @@ public class PieceTest {
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of(
-                new Position(5,4),
-                new Position(5,5)
-             
+                new Position(5, 4),
+                new Position(5, 5)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-       
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testGet1pionBordDuTableauLigne7Col7() {
         Position position = new Position(7, 7);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
-       
 
-        List<Position> expected = List.of(
-              
-             
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testGet1pionBordDuTableauLigne0Col() {
         Position position = new Position(7, 0);
         Piece piece = new Piece(Color.WHITE);
         board.setPiece(piece, position);
-       
 
-        List<Position> expected = List.of(
-              
-             
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testGet2pionAdverseDiagonalEt1pionAdverseDevantMoi() {
         Position position = new Position(4, 6);
         Piece piece = new Piece(Color.WHITE);
@@ -490,21 +478,18 @@ public class PieceTest {
         Position position4 = new Position(5, 6);
         Piece piece4 = new Piece(Color.BLACK);
         board.setPiece(piece4, position4);
-       
 
         List<Position> expected = List.of(
-                new Position(5,5),
-                new Position(5,7)
-              
-             
+                new Position(5, 5),
+                new Position(5, 7)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testGet1pionAdverseDiagonalEt1pionAdverseDevantMoiBord() {
         Position position = new Position(5, 7);
         Piece piece = new Piece(Color.WHITE);
@@ -515,21 +500,17 @@ public class PieceTest {
         Position position3 = new Position(6, 6);
         Piece piece3 = new Piece(Color.BLACK);
         board.setPiece(piece3, position3);
-       
 
         List<Position> expected = List.of(
-                
-                new Position(6,6)
-              
-             
+                new Position(6, 6)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testGet1pionEqupierDiagonalEt1pionEquipierDevantMoiBord() {
         Position position = new Position(5, 7);
         Piece piece = new Piece(Color.WHITE);
@@ -540,19 +521,15 @@ public class PieceTest {
         Position position3 = new Position(6, 6);
         Piece piece3 = new Piece(Color.WHITE);
         board.setPiece(piece3, position3);
-       
 
-        List<Position> expected = List.of(
-                
-              
-             
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
+
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testGet1PionAdverseDigonalEtLibreDevantMoi() {
         Position position = new Position(6, 4);
         Piece piece = new Piece(Color.WHITE);
@@ -563,22 +540,18 @@ public class PieceTest {
         Position position3 = new Position(7, 5);
         Piece piece3 = new Piece(Color.BLACK);
         board.setPiece(piece3, position3);
-       
 
         List<Position> expected = List.of(
-                new Position(7,3),
-                new Position(7,5),
-                new Position(7,4)
-                
-              
-             
+                new Position(7, 3),
+                new Position(7, 5),
+                new Position(7, 4)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
+
         assertEqualsIgnoringOrder(expected, positions);
     }
-    
+
     //test all the possibilities of the Black pawns 
     //test position initial(getRow=6)
     @Test
@@ -596,7 +569,6 @@ public class PieceTest {
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-
 
     @Test
     public void testsGet2CaseDevantVideColonne1() {
@@ -701,7 +673,7 @@ public class PieceTest {
         board.setPiece(piece, position);
 
         List<Position> expected = List.of(
-                new Position(5 ,7),
+                new Position(5, 7),
                 new Position(4, 7)
         );
 
@@ -793,8 +765,8 @@ public class PieceTest {
         board.setPiece(piece3, position3);
 
         List<Position> expected = List.of(
-                new Position(5,2),
-                new Position(4,2)
+                new Position(5, 2),
+                new Position(4, 2)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
@@ -824,6 +796,7 @@ public class PieceTest {
         assertEqualsIgnoringOrder(expected, positions);
     }
 //teste ne passe pas
+
     @Test
     public void testsGet2pionEquipierEnDiagonalEt1Pion2CaseDevantMoi() {
         Position position = new Position(6, 2);
@@ -888,7 +861,6 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-      
 
         assertEqualsIgnoringOrder(expected, positions);
     }
@@ -909,10 +881,10 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-      
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     @Test
     public void testsGet1pionsAdversaireEnDiagonalEt2PionDevantMoi() {
         Position position = new Position(6, 7);
@@ -933,10 +905,10 @@ public class PieceTest {
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-       
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     @Test
     public void testsGet1pionAdverseDevantMoi() {
         Position position = new Position(6, 7);
@@ -946,15 +918,13 @@ public class PieceTest {
         Piece piece2 = new Piece(Color.WHITE);
         board.setPiece(piece2, position2);
 
-        List<Position> expected = List.of(
-                
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-  
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     //test qui ne passe pas
     @Test
     public void testsGet1pionAdverse2CaseDevantMoi() {
@@ -967,19 +937,17 @@ public class PieceTest {
 
         List<Position> expected = List.of(
                 new Position(5, 7)
-                
-                
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
         System.out.println(expected);
         System.out.println(positions);
-       
 
         assertEqualsIgnoringOrder(expected, positions);
     }
+
     //test other  position (getRow !=6)
-     @Test
+    @Test
     public void testsGet1pionAdverseMilieu() {
         Position position = new Position(4, 4);
         Piece piece = new Piece(Color.BLACK);
@@ -989,51 +957,42 @@ public class PieceTest {
         board.setPiece(piece2, position2);
 
         List<Position> expected = List.of(
-                new Position(3,3),
-                new Position(3,4)
-             
+                new Position(3, 3),
+                new Position(3, 4)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-       
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testsGet1pionBordDuTableauLigne0Col0() {
-        Position position = new Position(0,0);
+        Position position = new Position(0, 0);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
-       
 
-        List<Position> expected = List.of(
-              
-             
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testsGet1pionBordDuTableauLigne0Col7() {
         Position position = new Position(0, 7);
         Piece piece = new Piece(Color.BLACK);
         board.setPiece(piece, position);
-       
 
-        List<Position> expected = List.of(
-              
-             
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testsGet2pionAdverseDiagonalEt1pionAdverseDevantMoi() {
         Position position = new Position(4, 6);
         Piece piece = new Piece(Color.BLACK);
@@ -1047,21 +1006,18 @@ public class PieceTest {
         Position position4 = new Position(3, 6);
         Piece piece4 = new Piece(Color.WHITE);
         board.setPiece(piece4, position4);
-       
 
         List<Position> expected = List.of(
-                new Position(3,5),
-                new Position(3,7)
-              
-             
+                new Position(3, 5),
+                new Position(3, 7)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testsGet1pionAdverseDiagonalEt1pionAdverseDevantMoiBord() {
         Position position = new Position(3, 7);
         Piece piece = new Piece(Color.BLACK);
@@ -1072,21 +1028,17 @@ public class PieceTest {
         Position position3 = new Position(2, 6);
         Piece piece3 = new Piece(Color.WHITE);
         board.setPiece(piece3, position3);
-       
 
         List<Position> expected = List.of(
-                
-                new Position(2,6)
-              
-             
+                new Position(2, 6)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
 
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testsGet1pionEqupierDiagonalEt1pionEquipierDevantMoiBord() {
         Position position = new Position(5, 7);
         Piece piece = new Piece(Color.BLACK);
@@ -1097,19 +1049,15 @@ public class PieceTest {
         Position position3 = new Position(4, 6);
         Piece piece3 = new Piece(Color.BLACK);
         board.setPiece(piece3, position3);
-       
 
-        List<Position> expected = List.of(
-                
-              
-             
-        );
+        List<Position> expected = List.of();
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
+
         assertEqualsIgnoringOrder(expected, positions);
     }
-     @Test
+
+    @Test
     public void testsGet1PionAdverseDigonalEtLibreDevantMoi() {
         Position position = new Position(5, 4);
         Piece piece = new Piece(Color.BLACK);
@@ -1120,23 +1068,17 @@ public class PieceTest {
         Position position3 = new Position(4, 5);
         Piece piece3 = new Piece(Color.WHITE);
         board.setPiece(piece3, position3);
-       
 
         List<Position> expected = List.of(
-                new Position(4,3),
-                new Position(4,5),
-                new Position(4,4)
-                
-              
-             
+                new Position(4, 3),
+                new Position(4, 5),
+                new Position(4, 4)
         );
 
         List<Position> positions = piece.getPossibleMoves(position, board);
-        
+
         assertEqualsIgnoringOrder(expected, positions);
     }
-    
-      
 
     /*
      *      Permet de tester si deux listes de positions sont identiques à l'ordre

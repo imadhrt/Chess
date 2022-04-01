@@ -25,7 +25,7 @@ public class Piece {
     }
 
     /**
-     * Accessor of the color
+     * Accessory of the color
      *
      * Allows access to the value of the color attribute.
      *
@@ -114,10 +114,10 @@ public class Piece {
 
                 listePosition.add(position.next(Direction.N).next(Direction.N));
 
-            }else{
+            } else {
                 return listePosition;
             }
-            
+
         }
         if (color.equals(Color.BLACK)) {
             if (board.isFree(position.next(Direction.S))
@@ -177,10 +177,10 @@ public class Piece {
     /**
      * Equals
      *
-     * Allows to compare if the two object are equals.
+     * Allows to compare if the two objects are equal.
      *
      * @param obj is an object
-     * @return true if theys are equals and false if they are not equals
+     * @return true if theys are equal and false if they are not equals
      */
     @Override
     public boolean equals(Object obj) {
@@ -208,4 +208,3 @@ public class Piece {
     }
 
 }
-

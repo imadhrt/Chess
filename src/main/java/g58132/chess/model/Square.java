@@ -29,7 +29,7 @@ public class Square {
     }
 
     /**
-     * Accessor of piece
+     * Accessory of piece
      *
      * Allows access to the value of the piece attribute.
      *

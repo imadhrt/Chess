@@ -31,7 +31,6 @@ public class Controller {
     /**
      * allows to control the game
      */
-
     public void play() {
         boolean gameIsOver = false;
 
@@ -46,16 +45,14 @@ public class Controller {
 
             System.out.println("Entrez la position d'arriver");
             Position newPosition = view.askPosition();
-            try{
-                
-            
+            try {
 
-            game.movePiecePosition(oldPosition, newPosition);
-            }catch(Exception e){
-                
-                System.out.println(e.getMessage());
+                game.movePiecePosition(oldPosition, newPosition);
+            } catch (Exception e) {
+
+                view.displayError(e.getMessage());
             }
-          
+
             if (game.isGameOver()) {
                 gameIsOver = true;
             }

@@ -1,4 +1,3 @@
-
 package g58132.chess.model;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author elhar
  */
 public class GameTest {
-    
+
     public GameTest() {
     }
 
@@ -22,10 +21,7 @@ public class GameTest {
         System.out.println("start");
         Game instance = new Game();
         instance.start();
-        
-        
-        
-   
+
     }
 
     /**
@@ -40,7 +36,7 @@ public class GameTest {
         Piece expResult = new Piece(Color.WHITE);
         Piece result = instance.getPiece(pos);
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -48,15 +44,14 @@ public class GameTest {
      */
     @Test
 
-
     public void testGetCurrentPlayer() {
         System.out.println("getCurrentPlayer");
         Game instance = new Game();
-         instance.start();
-        Player expResult = new Player(Color.WHITE) ;
+        instance.start();
+        Player expResult = new Player(Color.WHITE);
         Player result = instance.getCurrentPlayer();
         assertEquals(expResult, result);
-     
+
     }
 
     /**
@@ -70,7 +65,7 @@ public class GameTest {
         Player expResult = new Player(Color.BLACK);
         Player result = instance.getOppositePlayer();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -85,8 +80,9 @@ public class GameTest {
         boolean expResult = false;
         boolean result = instance.isCurrentPlayerPosition(pos);
         assertEquals(expResult, result);
-       
+
     }
+
     @Test
     public void testIsCurrentPlayerPosition1() {
         System.out.println("isCurrentPlayerPosition");
@@ -96,9 +92,8 @@ public class GameTest {
         boolean expResult = true;
         boolean result = instance.isCurrentPlayerPosition(pos);
         assertEquals(expResult, result);
-       
-    }
 
+    }
 
     /**
      * Test of isGameOver method, of class Game.
@@ -111,7 +106,7 @@ public class GameTest {
         boolean expResult = false;
         boolean result = instance.isGameOver();
         assertEquals(expResult, result);
-       
+
     }
 
     /**
@@ -126,12 +121,10 @@ public class GameTest {
         List<Position> expResult = List.of(
                 new Position(5, 1),
                 new Position(4, 1)
-        
         );
         List<Position> result = instance.getPossibleMoves(position);
         assertEquals(expResult, result);
-      
+
     }
 
-    
 }

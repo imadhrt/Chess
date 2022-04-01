@@ -31,7 +31,7 @@ public enum Direction {
     }
 
     /**
-     * Accessor of deltaRow
+     * Accessory of deltaRow
      *
      * Allows access to the value of the deltarow attribute.
      *
@@ -42,7 +42,7 @@ public enum Direction {
     }
 
     /**
-     * Accessor of deltaColumn
+     * Accessory of deltaColumn
      *
      * Allows access to the value of the deltaColumn attribute.
      *

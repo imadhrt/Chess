@@ -15,8 +15,8 @@ public class Position {
      *
      * Allows to initialize the row and column attributes to values.
      *
-     * @param row is a position in the board
-     * @param column is a position in the board
+     * @param row is a position on the board
+     * @param column is a position on the board
      */
     public Position(int row, int column) {
         this.row = row;
@@ -24,7 +24,7 @@ public class Position {
     }
 
     /**
-     * Accessor of row
+     * Accessory of row
      *
      * Allows access to the value of the row attribute.
      *
@@ -35,7 +35,7 @@ public class Position {
     }
 
     /**
-     * Accessor of column
+     * Accessory of column
      *
      * Allows access to the value of the column attribute.
      *
@@ -46,7 +46,7 @@ public class Position {
     }
 
     /**
-     * New position oh the piece
+     * New position of the piece
      *
      * @param dir is the direction of the piece
      *
@@ -60,10 +60,10 @@ public class Position {
     /**
      * Equals
      *
-     * Allows to compare if the two object are equals.
+     * Allows to compare if the two objects are equal.
      *
      * @param obj is an object
-     * @return true if theys are equals and false if they are not equals
+     * @return true if theys are equal and false if they are not equals
      */
     @Override
     public boolean equals(Object obj) {
@@ -87,11 +87,16 @@ public class Position {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + this.row;
+        hash = 29 * hash + this.column;
+        return hash;
+    }
+
+    @Override
     public String toString() {
         return "Position{" + "row=" + row + ", column=" + column + '}';
     }
-    
 
 }
-
-

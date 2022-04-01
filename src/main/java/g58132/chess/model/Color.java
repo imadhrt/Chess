@@ -2,8 +2,7 @@ package g58132.chess.model;
 
 /**
  *
- * Represents the color(black, white) of a player, of a square, 
- * or of a piece of
+ * Represents the color(black, white) of a player, of a square, or on a piece of
  * the chess game.
  *
  * @author elhar
@@ -22,7 +21,5 @@ public enum Color {
     public Color opposite() {
         return (this == WHITE) ? BLACK : WHITE;
     }
-    
-    
 
 }

@@ -137,10 +137,9 @@ public class Game implements Model {
 
         }
 
-
         this.board.setPiece(getPiece(oldPos), newPos);
         this.board.dropPiece(oldPos);
-        if(!isGameOver()) {
+        if (!isGameOver()) {
             this.currentPlayer = getOppositePlayer();
         }
 
@@ -157,15 +156,13 @@ public class Game implements Model {
         boolean gameOver = true;
         for (int i = 0; i < listePos.size() && gameOver; i++) {
             Position pos = listePos.get(i);
-       if(  !this.getPossibleMoves(pos).isEmpty()){
-           gameOver=false;
-           
-       }
+            if (!this.getPossibleMoves(pos).isEmpty()) {
+                gameOver = false;
+
+            }
 
         }
-        return gameOver ;
-
-               
+        return gameOver;
 
     }
 
