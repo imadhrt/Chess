@@ -34,16 +34,26 @@ public class Game implements Model {
     @Override
     public void start() {
         for (int colonne = 0; colonne < 8; colonne++) {
-            Position positionBlanc = new Position(1, colonne);
-            Piece pieceBlanc = new Piece(Color.WHITE);
-            board.setPiece(pieceBlanc, positionBlanc);
-
-            Position positionNoir = new Position(6, colonne);
-            Piece pieceNoir = new Piece(Color.BLACK);
-            board.setPiece(pieceNoir, positionNoir);
+//            Position positionBlanc = new Position(1, colonne);
+//            Piece pieceBlanc = new Piece(Color.WHITE);
+//            board.setPiece(pieceBlanc, positionBlanc);
+//
+//            Position positionNoir = new Position(6, colonne);
+//            Piece pieceNoir = new Piece(Color.BLACK);
+//            board.setPiece(pieceNoir, positionNoir);
+            optimizedStart(1, Color.WHITE);
+            optimizedStart(6, Color.BLACK);
 
         }
         this.currentPlayer = this.white;
+
+    }
+
+    private void optimizedStart(int initialPos, Color col) {
+        for (int colonne = 0; colonne < 8; colonne++) {
+            board.setPiece(new Piece(col), new Position(initialPos, colonne));
+
+        }
 
     }
 
@@ -139,9 +149,7 @@ public class Game implements Model {
 
         this.board.setPiece(getPiece(oldPos), newPos);
         this.board.dropPiece(oldPos);
-        if (!isGameOver()) {
-            this.currentPlayer = getOppositePlayer();
-        }
+        this.currentPlayer = getOppositePlayer();
 
     }
 

@@ -53,12 +53,8 @@ public class Board {
      * @return 6 if the color is black and 1 if the color is white
      */
     public int getInitialPawnRow(Color color) {
-        int pionPosInitial = 1;
-        if (color == Color.BLACK) {
-            pionPosInitial = 6;
 
-        }
-        return pionPosInitial;
+        return color == Color.BLACK ? 6 : 1;
     }
 
     /**

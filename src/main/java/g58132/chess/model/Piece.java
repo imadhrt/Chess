@@ -50,9 +50,19 @@ public class Piece {
 
         List<Position> positionPossible = new ArrayList();
 
-        positionPossible.addAll(movesNorthOrSouth(position, board));
-        positionPossible.addAll(moveTwoCaseSouthOrNorth(position, board));
-        positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board));
+        if (color.equals(Color.WHITE)) {
+            positionPossible.addAll(movesNorthOrSouth(position, board, Direction.N));
+            positionPossible.addAll(moveTwoCaseSouthOrNorth(position, board, Direction.N));
+            positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.NW));
+            positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.NE));
+
+        } else {
+            positionPossible.addAll(movesNorthOrSouth(position, board, Direction.S));
+            positionPossible.addAll(moveTwoCaseSouthOrNorth(position, board, Direction.S));
+            positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.SW));
+            positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.SE));
+
+        }
 
         return positionPossible;
     }
@@ -65,26 +75,15 @@ public class Piece {
      *
      * @param position is a position of a pawn on the board
      * @param board is a game board
+     * @param dir is a direction pawn
      * @return the list of positions that a pawn in a given position can make
      */
-    private List<Position> movesNorthOrSouth(Position position, Board board) {
+    private List<Position> movesNorthOrSouth(Position position, Board board, Direction dir) {
         List<Position> listePosition = new ArrayList();
 
-        if (color.equals(Color.WHITE)) {
-            /**
-             * verifie si à la position du plateau la case est blanc cela
-             * signifie que le pion est noir et si c'est noir cela signifie que
-             * s'est un pion blanc*
-             */
-            if (board.contains(position.next(Direction.N)) && board.isFree(position.next(Direction.N))) {
-                listePosition.add(position.next(Direction.N));
+        if (board.contains(position.next(dir)) && board.isFree(position.next(dir))) {
+            listePosition.add(position.next(dir));
 
-            }
-        }
-        if (color.equals(Color.BLACK)) {
-            if (board.contains(position.next(Direction.S)) && board.isFree(position.next(Direction.S))) {
-                listePosition.add(position.next(Direction.S));
-            }
         }
         return listePosition;
     }
@@ -97,35 +96,22 @@ public class Piece {
      *
      * @param position is a position of a pawn on the board
      * @param board is a game board
+     * @param dir is a direction pawn
      * @return the list of positions that a pawn in a given position can make
      */
-    private List<Position> moveTwoCaseSouthOrNorth(Position position, Board board) {
+    private List<Position> moveTwoCaseSouthOrNorth(Position position, Board board, Direction dir) {
         List<Position> listePosition = new ArrayList();
         if ((board.getInitialPawnRow(color) != position.getRow())) {//verifie 
             //si position initial
             return listePosition;
         }
 
-        if (color.equals(Color.WHITE)) {
-            if (board.isFree(position.next(Direction.N))
-                    && //premiere case libre
-                    board.isFree(position.next(Direction.N).next(Direction.N)) // deuxième case libre
-                    ) {
+        if (board.isFree(position.next(dir))
+                && //premiere case libre
+                board.isFree(position.next(dir).next(dir)) // deuxième case libre
+                ) {
 
-                listePosition.add(position.next(Direction.N).next(Direction.N));
-
-            } else {
-                return listePosition;
-            }
-
-        }
-        if (color.equals(Color.BLACK)) {
-            if (board.isFree(position.next(Direction.S))
-                    && board.isFree(position.next(Direction.S).next(Direction.S))) {
-
-                listePosition.add(position.next(Direction.S).next(Direction.S));
-
-            }
+            listePosition.add(position.next(dir).next(dir));
 
         }
         return listePosition;
@@ -140,38 +126,19 @@ public class Piece {
      *
      * @param position is a position of a pawn on the board
      * @param board is a game board
+     * @param dir is a direction pawn
      * @return the list of positions that a pawn in a given position can make
      */
-    private List<Position> moveDiagonalSouthEastOrSouthWhest(Position position,
-            Board board) {
+    private List<Position> moveDiagonalSouthEastOrSouthWhest(Position position, Board board, Direction dir) {
         List<Position> listePosition = new ArrayList();
 
-        if (color.equals(Color.WHITE)) {
-            if ((board.contains(position.next(Direction.NW)) && !board.isFree(position.next(Direction.NW))
-                    && board.containsOppositeColor(position.next(Direction.NW), color))) {
-                listePosition.add(position.next(Direction.NW));
-            }
-            if ((board.contains(position.next(Direction.NE)) && !board.isFree(position.next(Direction.NE))
-                    && board.containsOppositeColor(position.next(Direction.NE), color))) {
-                listePosition.add(position.next(Direction.NE));
-
-            }
-
+        if ((board.contains(position.next(dir)) && !board.isFree(position.next(dir))
+                && board.containsOppositeColor(position.next(dir), color))) {
+            listePosition.add(position.next(dir));
         }
-        if (color.equals(Color.BLACK)) {
-            if ((board.contains(position.next(Direction.SW)) && !board.isFree(position.next(Direction.SW)))
-                    && board.containsOppositeColor(position.next(Direction.SW), color)) {
-                listePosition.add(position.next(Direction.SW));
 
-            }
-            if ((board.contains(position.next(Direction.SE)) && !board.isFree(position.next(Direction.SE)))
-                    && board.containsOppositeColor(position.next(Direction.SE), color)) {
-                listePosition.add(position.next(Direction.SE));
-
-            }
-
-        }
         return listePosition;
+
     }
 
     /**

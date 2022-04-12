@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * Reprsent the view of the game to the user.
+ * Represent the view of the game to the user.
  *
  * @author elhar
  */
@@ -18,7 +18,7 @@ public class TextView implements View {
     private Model model;
 
     /**
-     * Constructor of textView
+     * Constructor of TextView
      *
      * Allows to initialise attribute model to value.
      *
@@ -34,8 +34,8 @@ public class TextView implements View {
      */
     @Override
     public void displayTitle() {
-        String phrase = "Chers joueurs, Bienvenue au jeu d'échecs";
-        String titre = "Echecs";
+        String phrase = "Chers joueurs, je vous souhaite la bienvenue aux échecs.";
+        String titre = "Échecs";
         System.out.println("=".repeat(phrase.length() + 8));
         System.out.println(" ".repeat((phrase.length() + 8) / 2) + titre);
         System.out.println("=".repeat(phrase.length() + 8));
@@ -51,11 +51,11 @@ public class TextView implements View {
     @Override
     public void displayBoard() {
         System.out.println(" ".repeat(3) + "-".repeat(41));
-        for (int i = 8; i > 0; i--) { //i est la ligne de l'echequier
-            System.out.print(i + "  |");//j est la colonne d'echquier
+        for (int i = 8; i > 0; i--) { //i est la ligne de l'échiquier
+            System.out.print(i + "  |");//j est la colonne d'échiquier
             for (int j = 0; j <= 7; j++) {
-               
-                Position pos = new Position(i-1, j);
+
+                Position pos = new Position(i - 1, j);
                 Piece piece = model.getPiece(pos);
                 if (piece == null) {
                     System.out.print(" ".repeat(4) + "|");
@@ -64,7 +64,6 @@ public class TextView implements View {
                 } else {
                     System.out.print(" PN |");
                 }
-
 
             }
             System.out.println("");
@@ -83,9 +82,9 @@ public class TextView implements View {
         if (model.isGameOver()) {
             Player gagnant = model.getOppositePlayer();
             if (gagnant.getColor().equals(Color.BLACK)) {
-                System.out.println("Le gagnant de la partie est le joueur NOIR");
+                System.out.println("Le vainqueur de ce jeu est le joueur NOIR.");
             } else {
-                System.out.println("Le gagnant de la partie est le joueur BLANC");
+                System.out.println("Le vainqueur de ce jeu est le joueur BLANC.");
 
             }
         }
@@ -98,10 +97,10 @@ public class TextView implements View {
     @Override
     public void displayPlayer() {
         if (model.getCurrentPlayer().getColor().equals(Color.WHITE)) {
-            System.out.println("***Vous pouvez jouer le joueur BLANC*** ");
+            System.out.println("***À votre tour, Joueur BLANC.*** ");
 
         } else {
-            System.out.println("***Vous pouvez jouer le joueur NOIR*** ");
+            System.out.println("***À votre tour, Joueur NOIR.*** ");
         }
 
     }
@@ -109,8 +108,8 @@ public class TextView implements View {
     /**
      * Requests a valid position on the game board from the user.
      *
-     * As long as the user input is not a valid position(row from 1 to 8 and
-     * column from 'a' to 'h'
+     * As long as the user input is not a valid position (row from 1 to 8 and
+     * column from A to H
      *
      * @return a valid position
      */
@@ -118,15 +117,15 @@ public class TextView implements View {
     public Position askPosition() {
         int row = LectureRobusteEntreMinEtMax(1, 8) - 1;//-1 car le tableau commence à 0
         int column = lectureRobusteChar();
-        Position pos = new Position(row, column);
-        return pos;
+
+        return new Position(row, column);
     }
 
     /**
      * Robust reading of an integer.
      *
      * As long as the user input is not an integer the method requests a new
-     * input the methode requests a new input
+     * input the method requests a new input
      *
      * @return the integer entered by the user
      */
@@ -134,8 +133,8 @@ public class TextView implements View {
         Scanner clavier = new Scanner(System.in);
         System.out.println("Entrez une ligne (1 à 8): ");
         while (!clavier.hasNextInt()) {
-            System.out.println("Ceci n'est pas un entier!!!");
-            System.out.println("Veuillez entrer un nombre entier:");
+            System.out.println("Ceci n'est pas un entier!");
+            System.out.println("Veuillez saisir un nombre entier:");
             clavier.next();
         }
         return clavier.nextInt();
@@ -155,9 +154,8 @@ public class TextView implements View {
         int ligne = LectutreRobusteEntier();
 
         while (ligne < min || ligne > max) {
-            System.out.println("La valeur n'est pas entre 1 et "
-                    + " 8 !!!!!");
-            System.out.println("Veuillez entrer un nombre compris entre 1 et 8 :");
+            System.out.println("La valeur n'est pas comprise entre 1 et 8 !");
+            System.out.println("Veuillez saisir un nombre compris entre 1 et 8 :");
             ligne = LectutreRobusteEntier();
         }
         return ligne;
@@ -167,18 +165,18 @@ public class TextView implements View {
     /**
      * Robust reading of a bounded string
      *
-     * As long as the user input is not an Sring of size 1 and containig a
+     * As long as the user input is not a sring of size 1 and containing a
      * letter the method requests a new input.
      *
-     * @return the bounded String entered by the user.
+     * @return the bounded String entered by the user
      */
     private static String lectureRobusteString() {
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Entrez une colonne ('a' à 'h'):");
+        System.out.println("Entrez une colonne (A à H):");
         String colonne = clavier.nextLine().toLowerCase();
 
         while (colonne.length() != 1 || !Character.isLetter(colonne.charAt(0))) {
-            System.out.println("Entrez une lettre de 'a' à 'h' :");
+            System.out.println("Entrez une lettre de A à H :");
             colonne = clavier.nextLine();
 
         }
@@ -191,7 +189,7 @@ public class TextView implements View {
      * as long as the user input is not a letter of the alphabet between 'a' and
      * 'h'.
      *
-     * @return a the number of letter of the alphabet (corresponds to the index
+     * @return a number of letters of the alphabet (corresponds to the index
      * of the table) between two bounded
      */
     private static int lectureRobusteChar() {
@@ -226,7 +224,7 @@ public class TextView implements View {
     }
 
     /**
-     * displays the error message
+     * Displays the error message
      *
      * @param message is an error message
      */

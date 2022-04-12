@@ -1,6 +1,7 @@
 package g58132.chess.controller;
 
 import g58132.chess.model.Model;
+import g58132.chess.model.Piece;
 import g58132.chess.model.Position;
 import g58132.chess.view.View;
 
@@ -40,14 +41,17 @@ public class Controller {
         while (!gameIsOver) {
             view.displayBoard();
             view.displayPlayer();
-            System.out.println("Entrez une position de DEPART");
-            Position oldPosition = view.askPosition();
-
-            System.out.println("Entrez la position d'ARRIVER");
-            Position newPosition = view.askPosition();
             try {
+                System.out.println("Saisissez la position DEPART");
+                Position oldPosition = view.askPosition();
+                if (game.isCurrentPlayerPosition(oldPosition)) {
 
-                game.movePiecePosition(oldPosition, newPosition);
+                    System.out.println("Entrez une position d'ARRIVÉE");
+                    Position newPosition = view.askPosition();
+
+                    game.movePiecePosition(oldPosition, newPosition);
+
+                }
             } catch (Exception e) {
 
                 view.displayError(e.getMessage());
