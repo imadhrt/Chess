@@ -42,11 +42,11 @@ public class Controller {
             view.displayBoard();
             view.displayPlayer();
             try {
-                System.out.println("Saisissez la position DEPART");
+                view.displayMessage("Saisissez la position DEPART");
                 Position oldPosition = view.askPosition();
-                if (game.isCurrentPlayerPosition(oldPosition)) {
+                if (game.isCurrentPlayerPosition(oldPosition)) {//verifie si position du joueur courant
 
-                    System.out.println("Entrez une position d'ARRIVÉE");
+                    view.displayMessage("Entrez une position d'ARRIVÉE");
                     Position newPosition = view.askPosition();
 
                     game.movePiecePosition(oldPosition, newPosition);

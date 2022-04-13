@@ -189,8 +189,8 @@ public class TextView implements View {
      * as long as the user input is not a letter of the alphabet between 'a' and
      * 'h'.
      *
-     * @return a number of letters of the alphabet (corresponds to the index
-     * of the table) between two bounded
+     * @return a number of letters of the alphabet (corresponds to the index of
+     * the table) between two bounded
      */
     private static int lectureRobusteChar() {
 
@@ -233,6 +233,16 @@ public class TextView implements View {
     public void displayError(String message) {
         System.out.println(message);
 
+    }
+
+    /**
+     * Displays the message
+     *
+     * @param message is a message
+     */
+    @Override
+    public void displayMessage(String message) {
+        System.out.println(message);
     }
 
     @Override
