@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public abstract class Piece {
 
-    Color color;
+    private Color color;
 
     /**
      * Constructor of piece

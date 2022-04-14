@@ -2,16 +2,10 @@ package g58132.chess.model;
 
 import g58132.chess.model.pieces.Pawn;
 import g58132.chess.model.pieces.Piece;
-import java.util.List;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *

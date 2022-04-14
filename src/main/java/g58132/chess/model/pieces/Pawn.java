@@ -19,7 +19,7 @@ public class Pawn extends Piece {
      *
      * use the parent constructor
      *
-     * @param color is color of the piece
+     * @param color is color of the pawn
      */
     public Pawn(Color color) {
         super(color);
@@ -41,7 +41,7 @@ public class Pawn extends Piece {
 
         List<Position> positionPossible = new ArrayList();
 
-        if (color.equals(Color.WHITE)) {
+        if (super.getColor().equals(Color.WHITE)) {
             positionPossible.addAll(movesNorthOrSouth(position, board, Direction.N));
             positionPossible.addAll(moveTwoCaseSouthOrNorth(position, board, Direction.N));
             positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.NW));
@@ -73,7 +73,7 @@ public class Pawn extends Piece {
     public List<Position> getCapturePositions(Position position, Board board) {
         List<Position> positionPossible = new ArrayList();
 
-        if (color.equals(Color.WHITE)) {
+        if (super.getColor().equals(Color.WHITE)) {
             positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.NW));
             positionPossible.addAll(moveDiagonalSouthEastOrSouthWhest(position, board, Direction.NE));
 
@@ -121,7 +121,7 @@ public class Pawn extends Piece {
      */
     private List<Position> moveTwoCaseSouthOrNorth(Position position, Board board, Direction dir) {
         List<Position> listePosition = new ArrayList();
-        if ((board.getInitialPawnRow(color) != position.getRow())) {//verifie 
+        if ((board.getInitialPawnRow(super.getColor()) != position.getRow())) {//verifie 
             //si position initial
             return listePosition;
         }
@@ -153,7 +153,7 @@ public class Pawn extends Piece {
         List<Position> listePosition = new ArrayList();
 
         if ((board.contains(position.next(dir)) && !board.isFree(position.next(dir))
-                && board.containsOppositeColor(position.next(dir), color))) {
+                && board.containsOppositeColor(position.next(dir), super.getColor()))) {
             listePosition.add(position.next(dir));
         }
 
