@@ -1,5 +1,7 @@
 package g58132.chess.model;
 
+import g58132.chess.model.pieces.Piece;
+
 /**
  * Represents one of the sixty-four on the board.
  *

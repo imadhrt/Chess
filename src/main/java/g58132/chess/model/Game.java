@@ -1,5 +1,7 @@
 package g58132.chess.model;
 
+import g58132.chess.model.pieces.Pawn;
+import g58132.chess.model.pieces.Piece;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,7 +53,7 @@ public class Game implements Model {
 
     private void optimizedStart(int initialPos, Color col) {
         for (int colonne = 0; colonne < 8; colonne++) {
-            board.setPiece(new Piece(col), new Position(initialPos, colonne));
+            board.setPiece(new Pawn(col), new Position(initialPos, colonne));
 
         }
 

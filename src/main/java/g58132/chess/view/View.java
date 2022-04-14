@@ -44,7 +44,13 @@ public interface View {
      * @param message is an error message
      */
     public void displayError(String message);
-    
+
+    /**
+     * Displays the message
+     *
+     * @param message is a message
+     */
+
     public void displayMessage(String message);
 
 }

@@ -1,5 +1,7 @@
 package g58132.chess.model;
 
+import g58132.chess.model.pieces.Pawn;
+import g58132.chess.model.pieces.Piece;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,7 +35,7 @@ public class GameTest {
         Position pos = new Position(1, 0);
         Game instance = new Game();
         instance.start();//place les pieces en ligne
-        Piece expResult = new Piece(Color.WHITE);
+        Piece expResult = new Pawn(Color.WHITE);
         Piece result = instance.getPiece(pos);
         assertEquals(expResult, result);
 

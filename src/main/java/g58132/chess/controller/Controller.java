@@ -1,7 +1,7 @@
 package g58132.chess.controller;
 
 import g58132.chess.model.Model;
-import g58132.chess.model.Piece;
+import g58132.chess.model.pieces.Piece;
 import g58132.chess.model.Position;
 import g58132.chess.view.View;
 

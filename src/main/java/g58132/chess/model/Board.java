@@ -1,5 +1,6 @@
 package g58132.chess.model;
 
+import g58132.chess.model.pieces.Piece;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
