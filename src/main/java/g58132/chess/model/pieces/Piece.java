@@ -2,9 +2,9 @@ package g58132.chess.model.pieces;
 
 import g58132.chess.model.Board;
 import g58132.chess.model.Color;
-import g58132.chess.model.Direction;
+
 import g58132.chess.model.Position;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -70,7 +70,6 @@ public abstract class Piece {
 //
 //        return positionPossible;
 //    }
-    
     /**
      *
      * Pieces capture

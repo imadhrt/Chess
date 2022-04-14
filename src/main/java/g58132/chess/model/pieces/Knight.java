@@ -27,11 +27,15 @@ public class Knight extends Piece {
 
     /**
      *
-     * @param position
-     * @param board
-     * @return
+     * Movement of knight on the board
+     *
+     * Allows to add all the possible position on the board.
+     *
+     * @param position is a position of a knight on the board
+     * @param board is a game board
+     * @return a list of all possible positions of a move for a knight in a
+     * given position
      */
-
     @Override
     public List<Position> getPossibleMoves(Position position, Board board) {
         List<Position> listePosition = new ArrayList();
@@ -49,13 +53,18 @@ public class Knight extends Piece {
 
     /**
      *
-     * @param position
-     * @param board
-     * @param dir1
-     * @param dir2
-     * @return
+     * Movement of knight on the board
+     *
+     * Allows to check if a knight in a given position can move in L (pawn
+     * adverse or square free ) 
+     * and add it to the list.
+     *
+     * @param position s a position of a knight on the board
+     * @param board is a game board
+     * @param dir1 is a direction knight
+     * @param dir2 is a direction knight
+     * @return the list of positions that a knight in a given position can make
      */
-
     private List<Position> displacementL(Position position, Board board, Direction dir1, Direction dir2) {
         List<Position> listePosition = new ArrayList();
 
