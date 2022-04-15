@@ -681,6 +681,25 @@ public class KingTest {
         assertEqualsIgnoringOrder(expResult, result);
 
     }
+    @Test
+    public void testsGetPossibleMovesBord() {
+        System.out.println("getPossibleMoves");
+        Board board = new Board();
+        Position position = new Position(3,7 );
+        King king = new King(Color.BLACK);
+      
+        List<Position> expResult = List.of(
+                new Position(2, 7),
+                new Position(4, 7),
+                new Position(4, 6),
+                new Position(3, 6),
+                new Position(2, 6)
+        );
+
+        List<Position> result = king.getPossibleMoves(position, board);
+        assertEqualsIgnoringOrder(expResult, result);
+
+    }
 
     /*
      *      Permet de tester si deux listes de positions sont identiques à l'ordre

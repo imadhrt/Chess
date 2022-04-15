@@ -644,6 +644,21 @@ public class KnightTest {
         assertEqualsIgnoringOrder(expResult, result);
 
     }
+        @Test
+    public void testsGetPossibleMovesBord() {
+        System.out.println("getPossibleMoves");
+        Board board = new Board();
+        Position position = new Position(3, 7);
+        Knight knight = new Knight(Color.BLACK);
+        List<Position> expResult = List.of(
+                new Position(5, 6),
+                new Position(2, 5),
+                new Position(4, 5),
+                new Position(1, 6)
+        );
+        List<Position> result = knight.getPossibleMoves(position, board);
+        assertEqualsIgnoringOrder(expResult, result);
+    }
 
 
     /*
