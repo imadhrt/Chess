@@ -2,8 +2,10 @@ package g58132.chess.model.pieces;
 
 import g58132.chess.model.Board;
 import g58132.chess.model.Color;
+import g58132.chess.model.Direction;
 
 import g58132.chess.model.Position;
+import g58132.chess.model.Square;
 
 import java.util.List;
 import java.util.Objects;
@@ -84,6 +86,17 @@ public abstract class Piece {
         return getPossibleMoves(position, board);
 
     }
+//    private List<Position> RookOrBishop(Position position, Board board, Direction direction){
+//        for (int i = 0; i < 8; i++) {
+//            for(int j=0;j<8;j++){
+//                
+//                
+//                
+//            }
+//            
+//        }
+//        
+//    }
 
     /**
      * Equals

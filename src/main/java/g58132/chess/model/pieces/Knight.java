@@ -1,4 +1,4 @@
-package g58132.chess.model.pieces;
+    package g58132.chess.model.pieces;
 
 import g58132.chess.model.Board;
 import g58132.chess.model.Color;

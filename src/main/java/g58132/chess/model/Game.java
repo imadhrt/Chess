@@ -36,13 +36,7 @@ public class Game implements Model {
     @Override
     public void start() {
         for (int colonne = 0; colonne < 8; colonne++) {
-//            Position positionBlanc = new Position(1, colonne);
-//            Piece pieceBlanc = new Piece(Color.WHITE);
-//            board.setPiece(pieceBlanc, positionBlanc);
-//
-//            Position positionNoir = new Position(6, colonne);
-//            Piece pieceNoir = new Piece(Color.BLACK);
-//            board.setPiece(pieceNoir, positionNoir);
+
             optimizedStart(1, Color.WHITE);
             optimizedStart(6, Color.BLACK);
 
