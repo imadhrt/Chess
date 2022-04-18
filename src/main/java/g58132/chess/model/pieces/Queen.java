@@ -14,19 +14,28 @@ import java.util.List;
  */
 public class Queen extends Piece {
 
+    /**
+     * Constructor of king
+     *
+     * use the parent constructor
+     *
+     * @param color is color of the king
+     */
+
     public Queen(Color color) {
         super(color);
     }
-     /**
+
+    /**
      *
      * Movement of queen on the board
      *
      * Allows to add all the possible position the queen can make on the board.
      *
-     * @param position is a position of a knight on the board
+     * @param position is a position of a queen on the board
      * @param board is a game board
-     * @return a list of all possible positions of a move for a knight in a
-     * given position
+     * @return a list of all possible positions of a move for a queen in a given
+     * position
      */
 
     @Override
@@ -44,7 +53,5 @@ public class Queen extends Piece {
         return listePos;
 
     }
-
-
 
 }
