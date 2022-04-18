@@ -29,7 +29,7 @@ public class King extends Piece {
      *
      * Movement of king on the board
      *
-     * Allows to add all the possible position on the board.
+     * Allows to add all the possible position the king can make on the board.
      *
      * @param position is a position of a king on the board
      * @param board is a game board

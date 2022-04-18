@@ -29,7 +29,7 @@ public class Pawn extends Piece {
      *
      * movement of pawn on the board
      *
-     * Allows to add all the possible position on the board.
+     * Allows to add all the possible position the pawn can make on the board.
      *
      * @param position is a position of a pawn on the board
      * @param board is a game board

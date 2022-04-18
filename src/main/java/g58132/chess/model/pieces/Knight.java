@@ -29,7 +29,7 @@ public class Knight extends Piece {
      *
      * Movement of knight on the board
      *
-     * Allows to add all the possible position on the board.
+     * Allows to add all the possible position the knight can make on the board.
      *
      * @param position is a position of a knight on the board
      * @param board is a game board

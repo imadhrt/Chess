@@ -5,7 +5,7 @@ import g58132.chess.model.Color;
 import g58132.chess.model.Direction;
 
 import g58132.chess.model.Position;
-import g58132.chess.model.Square;
+import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Objects;
@@ -86,17 +86,36 @@ public abstract class Piece {
         return getPossibleMoves(position, board);
 
     }
-//    private List<Position> RookOrBishop(Position position, Board board, Direction direction){
-//        for (int i = 0; i < 8; i++) {
-//            for(int j=0;j<8;j++){
-//                
-//                
-//                
-//            }
-//            
-//        }
-//        
-//    }
+
+    /**
+     * Moving the bishop, the queen and the rook
+     *
+     * Allows to check if the piece in a given position can move and add it to
+     * the list.
+     *
+     * @param position is a position of a piece on the board
+     * @param board is a game board
+     * @param dir is a direction a piece
+     * @return the list of positions that a piece in a given position can make
+     */
+    protected List<Position> MoveQueenAndBishopAndRook(Position position, Board board, Direction dir) {
+        List<Position> positionPossible = new ArrayList();
+        Position pos = position;
+
+        while (board.contains(pos.next(dir)) && ((board.isFree(pos.next(dir))) || board.containsOppositeColor(pos.next(dir), this.color))) {
+            //vérifie s'il est dans le plateau et case vide ou contient un pion opposé
+            if (board.containsOppositeColor(pos.next(dir), this.color)) { // si le pion est de couleur opposé il ajoute dans la liste et retourne la liste pour ne pas continuer à ajouter des positions
+                positionPossible.add(pos.next(dir));
+                return positionPossible;
+            }
+
+            positionPossible.add(pos.next(dir));
+            pos = pos.next(dir);
+
+        }
+        return positionPossible;
+
+    }
 
     /**
      * Equals
