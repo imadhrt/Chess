@@ -1,7 +1,12 @@
 package g58132.chess.model;
 
+import g58132.chess.model.pieces.Bishop;
+import g58132.chess.model.pieces.King;
+import g58132.chess.model.pieces.Knight;
 import g58132.chess.model.pieces.Pawn;
 import g58132.chess.model.pieces.Piece;
+import g58132.chess.model.pieces.Queen;
+import g58132.chess.model.pieces.Rook;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,13 +40,43 @@ public class Game implements Model {
      */
     @Override
     public void start() {
+        this.currentPlayer = this.white;
         for (int colonne = 0; colonne < 8; colonne++) {
 
             optimizedStart(1, Color.WHITE);
             optimizedStart(6, Color.BLACK);
 
         }
-        this.currentPlayer = this.white;
+        //Tour Blanc
+        board.setPiece(new Rook(Color.WHITE), new Position(0, 0));
+        board.setPiece(new Rook(Color.WHITE), new Position(0, 7));
+        //Tour noir
+        board.setPiece(new Rook(Color.BLACK), new Position(7, 0));
+        board.setPiece(new Rook(Color.BLACK), new Position(7, 7));
+
+        //Cavalier Blanc
+        board.setPiece(new Knight(Color.WHITE), new Position(0, 1));
+        board.setPiece(new Knight(Color.WHITE), new Position(0, 6));
+
+        //Cavalier Blanc
+        board.setPiece(new Knight(Color.BLACK), new Position(7, 1));
+        board.setPiece(new Knight(Color.BLACK), new Position(7, 6));
+
+        //Fou blanc
+        board.setPiece(new Bishop(Color.WHITE), new Position(0, 2));
+        board.setPiece(new Bishop(Color.WHITE), new Position(0, 5));
+        //Fou noir
+        board.setPiece(new Bishop(Color.BLACK), new Position(7, 2));
+        board.setPiece(new Bishop(Color.BLACK), new Position(7, 5));
+        // Reine Blanc
+        board.setPiece(new Queen(Color.WHITE), new Position(0, 3));
+        //Reine Noir
+        board.setPiece(new Queen(Color.BLACK), new Position(7, 3));
+
+        //Roi Blanc
+        board.setPiece(new King(Color.WHITE), new Position(0, 4));
+        //Roi Noir
+        board.setPiece(new King(Color.BLACK), new Position(7, 4));
 
     }
 
