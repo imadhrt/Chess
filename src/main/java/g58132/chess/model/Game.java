@@ -174,7 +174,7 @@ public class Game implements Model {
         }
         if (!getPossibleMoves(oldPos).contains(newPos)) {
             throw new IllegalArgumentException("Le coup n'est pas valable pour "
-                    + " la pièce située à la position actuel  ");
+                    + " la pièce située à la position actuelle  ");
 
         }
 

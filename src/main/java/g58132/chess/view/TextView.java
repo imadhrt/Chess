@@ -5,6 +5,7 @@ import g58132.chess.model.Model;
 import g58132.chess.model.pieces.Piece;
 import g58132.chess.model.Player;
 import g58132.chess.model.Position;
+import g58132.chess.model.pieces.*;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -57,12 +58,63 @@ public class TextView implements View {
 
                 Position pos = new Position(i - 1, j);
                 Piece piece = model.getPiece(pos);
-                if (piece == null) {
-                    System.out.print(" ".repeat(4) + "|");
-                } else if (Color.WHITE == piece.getColor()) {
-                    System.out.print(" PB |");
+
+                if (piece instanceof Pawn) {
+                    if (Color.WHITE == piece.getColor()) {
+                        System.out.print(" PB |");
+
+                    } else {
+                        System.out.print(" PN |");
+
+                    }
+
+                } else if (piece instanceof Rook) {
+                    if (Color.WHITE == piece.getColor()) {
+                        System.out.print(" TB |");
+
+                    } else {
+                        System.out.print(" TN |");
+
+                    }
+
+                } else if (piece instanceof Knight) {
+                    if (Color.WHITE == piece.getColor()) {
+                        System.out.print(" CB |");
+
+                    } else {
+                        System.out.print(" CN |");
+
+                    }
+
+                } else if (piece instanceof Bishop) {
+                    if (Color.WHITE == piece.getColor()) {
+                        System.out.print(" FB |");
+
+                    } else {
+                        System.out.print(" FN |");
+
+                    }
+
+                } else if (piece instanceof Queen) {
+                    if (Color.WHITE == piece.getColor()) {
+                        System.out.print(" #B |");
+
+                    } else {
+                        System.out.print(" #N |");
+
+                    }
+
+                } else if (piece instanceof King) {
+                    if (Color.WHITE == piece.getColor()) {
+                        System.out.print(" *B |");
+
+                    } else {
+                        System.out.print(" *N |");
+
+                    }
+
                 } else {
-                    System.out.print(" PN |");
+                    System.out.print(" ".repeat(4) + "|");
                 }
 
             }

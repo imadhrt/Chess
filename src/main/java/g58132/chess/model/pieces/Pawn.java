@@ -161,4 +161,9 @@ public class Pawn extends Piece {
 
     }
 
+    @Override
+    public String toString() {
+        return Pawn.super.getColor() == Color.BLACK ? " PN |" : " PB |";
+    }
+
 }
