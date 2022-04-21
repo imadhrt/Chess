@@ -1,3 +1,4 @@
+
 package g58132.chess.main;
 
 import g58132.chess.controller.Controller;

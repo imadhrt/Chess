@@ -63,7 +63,7 @@ public class Board {
      *
      * Allows to place the piece on the corresponding square.
      *
-     * @param piece is an piece
+     * @param piece is a piece
      * @param position is an position on the play
      * @throw pos if the position is not on the board
      */
@@ -169,7 +169,7 @@ public class Board {
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
                 Position pos = new Position(i, j);
-                if ((!isFree(pos)) && squares[i][j].getPiece().getColor() == player.getColor()) {
+                if ((!isFree(pos)) && getPiece(pos).getColor() == player.getColor()) {
                     joueurOccupe.add(pos);
                 }
 
@@ -178,6 +178,30 @@ public class Board {
         }
 
         return joueurOccupe;
+    }
+
+    /**
+     * Checks if piece is on the board or not
+     *
+     * @param piece is a piece in the game
+     * @return the position if the piece passed in parameter is on the board
+     * else  null
+     */
+
+    public Position getPiecePosition(Piece piece) {
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[i].length; j++) {
+                if (squares[i][j].getPiece().equals(piece)) {
+                   
+                    return new Position(i, j);
+
+                }
+
+            }
+
+        }
+        return null;
+
     }
 
     /**

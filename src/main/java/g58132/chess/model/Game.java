@@ -21,6 +21,8 @@ public class Game implements Model {
     private Player white;
     private Player black;
     private Player currentPlayer;
+    private King whiteKing;
+    private King blackKing;
 
     /**
      * Constructor of game
@@ -41,6 +43,11 @@ public class Game implements Model {
     @Override
     public void start() {
         this.currentPlayer = this.white;
+        
+        // initialiser roi blan et noir
+        this.whiteKing=new King(Color.WHITE);
+        this.blackKing=new King(Color.BLACK);
+        
         for (int colonne = 0; colonne < 8; colonne++) {
 
             optimizedStart(1, Color.WHITE);
