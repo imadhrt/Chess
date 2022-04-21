@@ -23,6 +23,7 @@ public class Game implements Model {
     private Player currentPlayer;
     private King whiteKing;
     private King blackKing;
+    private GameState state;
 
     /**
      * Constructor of game
@@ -34,6 +35,7 @@ public class Game implements Model {
         this.white = new Player(Color.WHITE);
         this.black = new Player(Color.BLACK);
         this.board = new Board();
+        this.state = GameState.PLAY;
     }
 
     /**
@@ -43,11 +45,11 @@ public class Game implements Model {
     @Override
     public void start() {
         this.currentPlayer = this.white;
-        
+
         // initialiser roi blan et noir
-        this.whiteKing=new King(Color.WHITE);
-        this.blackKing=new King(Color.BLACK);
-        
+        this.whiteKing = new King(Color.WHITE);
+        this.blackKing = new King(Color.BLACK);
+
         for (int colonne = 0; colonne < 8; colonne++) {
 
             optimizedStart(1, Color.WHITE);
@@ -267,6 +269,11 @@ public class Game implements Model {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public GameState getState() {
+        return this.state;
     }
 
 }
