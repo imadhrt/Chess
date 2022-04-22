@@ -17,13 +17,13 @@ import java.util.Objects;
  */
 public class Game implements Model {
 
-    private Board board;
-    private Player white;
-    private Player black;
+    private final Board board;
+    private final Player white;
+    private final Player black;
     private Player currentPlayer;
     private King whiteKing;
     private King blackKing;
-    private GameState state;
+    private final GameState state;
 
     /**
      * Constructor of game

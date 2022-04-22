@@ -1,7 +1,6 @@
 package g58132.chess.controller;
 
 import g58132.chess.model.Model;
-import g58132.chess.model.pieces.Piece;
 import g58132.chess.model.Position;
 import g58132.chess.view.View;
 
@@ -12,8 +11,8 @@ import g58132.chess.view.View;
  */
 public class Controller {
 
-    private Model game;
-    private View view;
+    private final Model game;
+    private final View view;
 
     /**
      * Constructor of Controller

@@ -14,8 +14,8 @@ public enum Direction {
     SW(-1, -1),
     S(-1, 0),
     SE(-1, 1);
-    private int deltaRow;
-    private int deltaColumn;
+    private final int deltaRow;
+    private final int deltaColumn;
 
     /**
      * Constructor of Direction

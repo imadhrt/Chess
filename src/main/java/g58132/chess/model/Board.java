@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Board {
 
-    private Square[][] squares;
+    private final Square[][] squares;
 
     /**
      * Constructor whitout parameter

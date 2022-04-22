@@ -8,7 +8,7 @@ package g58132.chess.model;
 public class Position {
 
     private final int row;
-    private int column;
+    private final int column;
 
     /**
      * Constructor of position

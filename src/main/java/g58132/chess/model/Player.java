@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class Player {
 
-    private Color color;
+    private final Color color;
 
     /**
      * Constructor of player

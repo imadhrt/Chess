@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class TextView implements View {
 
-    private Model model;
+    private final Model model;
 
     /**
      * Constructor of TextView
