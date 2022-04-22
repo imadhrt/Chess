@@ -76,4 +76,13 @@ public interface Model {
      */
     public List<Position> getPossibleMoves(Position position);
 
+    /**
+     * Accessory of state
+     *
+     * Allows access to the value of the state attribute.
+     *
+     * @return the value of the state attribute
+     */
+    public GameState getState();
+
 }

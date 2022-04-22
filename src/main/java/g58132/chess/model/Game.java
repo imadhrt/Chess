@@ -270,6 +270,13 @@ public class Game implements Model {
         }
         return true;
     }
+       /**
+     * Accessory of state
+     *
+     * Allows access to the value of the state attribute.
+     *
+     * @return the value of the state attribute
+     */
 
     @Override
     public GameState getState() {
