@@ -7,6 +7,7 @@ import g58132.chess.model.pieces.Pawn;
 import g58132.chess.model.pieces.Piece;
 import g58132.chess.model.pieces.Queen;
 import g58132.chess.model.pieces.Rook;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -186,10 +187,12 @@ public class Game implements Model {
                     + " la pièce située à la position actuelle  ");
 
         }
+        if (IsValidMove(oldPos, newPos)) {
 
-        this.board.setPiece(getPiece(oldPos), newPos);
-        this.board.dropPiece(oldPos);
-        this.currentPlayer = getOppositePlayer();
+            this.board.setPiece(getPiece(oldPos), newPos);
+            this.board.dropPiece(oldPos);
+            this.currentPlayer = getOppositePlayer();
+        }
 
     }
 
@@ -224,6 +227,81 @@ public class Game implements Model {
     public List<Position> getPossibleMoves(Position position) {
         return this.board.getPiece(position).getPossibleMoves(position, board);
 
+    }
+
+    /**
+     * Accessory of state
+     *
+     * Allows access to the value of the state attribute.
+     *
+     * @return the value of the state attribute
+     */
+    @Override
+    public GameState getState() {
+        return this.state;
+    }
+
+    /**
+     * Is valide move
+     *
+     * allows to check that the movement of a piece from the oldPos position to
+     * the newPos position is valid.
+     *
+     * @param oldPos the current position
+     * @param newPos the new position of the board where to put the piece
+     * @return true if the move is possible or false it is not.
+     * @throws IllegalArgumentException the starting position oldPos does not
+     * contain piece.
+     * @throws IllegalArgumentException moving the piece from oldPos to newPos
+     * is not a possible move for the piece in question.
+     */
+    @Override
+    public boolean IsValidMove(Position oldPos, Position newPos) {
+        boolean isNotContaineKing = true;
+        if (board.isFree(oldPos)) {
+            throw new IllegalArgumentException("La position départ ne contient aucune pièce");
+        }
+        if (!getPossibleMoves(oldPos).contains(newPos)) {
+            throw new IllegalArgumentException("Le coup n'est pas valable pour "
+                    + " la pièce située à la position actuelle  ");
+        }
+
+        this.board.setPiece(getPiece(oldPos), newPos);
+        this.board.dropPiece(oldPos);
+        this.currentPlayer = getOppositePlayer();
+
+        if (getCapturePositions(getOppositePlayer()).contains(board.getPiecePosition(oppositeKingColor()))) {
+            isNotContaineKing = false;
+
+        }
+        this.board.setPiece(getPiece(newPos), oldPos);
+        this.board.dropPiece(newPos);
+        this.currentPlayer = getOppositePlayer();
+
+        return isNotContaineKing;
+
+    }
+
+    private King oppositeKingColor() {
+        return this.currentPlayer == white ? whiteKing : blackKing;
+    }
+
+    /**
+     * Capture position
+     *
+     *
+     * @param player
+     * @return
+     */
+    private List<Position> getCapturePositions(Player player) {
+        List<Position> listePos = new ArrayList();
+        List<Position> pos = board.getPositionOccupiedBy(player);
+        for (Position position : pos) {
+            listePos.addAll(getPossibleMoves(position));
+
+        }
+
+        return listePos;
     }
 
     @Override
@@ -269,18 +347,6 @@ public class Game implements Model {
             return false;
         }
         return true;
-    }
-       /**
-     * Accessory of state
-     *
-     * Allows access to the value of the state attribute.
-     *
-     * @return the value of the state attribute
-     */
-
-    @Override
-    public GameState getState() {
-        return this.state;
     }
 
 }

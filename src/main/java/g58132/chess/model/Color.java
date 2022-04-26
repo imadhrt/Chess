@@ -1,3 +1,4 @@
+
 package g58132.chess.model;
 
 /**

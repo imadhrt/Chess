@@ -85,4 +85,20 @@ public interface Model {
      */
     public GameState getState();
 
+    /**
+     * Is valide move
+     *
+     * allows to check that the movement of a piece from the oldPos position to
+     * the newPos position is valid.
+     *
+     * @param oldPos the current position
+     * @param newPos the new position of the board where to put the piece
+     * @return true if the move is possible or false it is not.
+     * @throws IllegalArgumentException the starting position oldPos does not
+     * contain piece.
+     * @throws IllegalArgumentException moving the piece from oldPos to newPos
+     * is not a possible move for the piece in question.
+     */
+    public boolean IsValidMove(Position oldPos, Position newPos);
+
 }
