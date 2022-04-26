@@ -18,5 +18,7 @@ public class main {
         Controller controller = new Controller(game, new TextView(game));
         controller.play();
     }
+    
+    
 
 }
