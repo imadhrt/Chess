@@ -257,7 +257,7 @@ public class Game implements Model {
      */
     @Override
     public boolean IsValidMove(Position oldPos, Position newPos) {
-        boolean isNotContaineKing = true;
+        boolean isNotContainsKing = true;
         if (board.isFree(oldPos)) {
             throw new IllegalArgumentException("La position départ ne contient aucune pièce");
         }
@@ -270,20 +270,28 @@ public class Game implements Model {
         this.board.dropPiece(oldPos);
         this.currentPlayer = getOppositePlayer();
 
-        if (getCapturePositions(getOppositePlayer()).contains(board.getPiecePosition(oppositeKingColor()))) {
-            isNotContaineKing = false;
+        if (getCapturePositions(this.currentPlayer).contains(board.getPiecePosition(oppositeKingColor()))) {
+            isNotContainsKing = false;
 
         }
         this.board.setPiece(getPiece(newPos), oldPos);
         this.board.dropPiece(newPos);
         this.currentPlayer = getOppositePlayer();
 
-        return isNotContaineKing;
+        return isNotContainsKing;
 
     }
 
+    /**
+     * Current King
+     *
+     * allows to check the current king
+     *
+     * @return the black king if the current player is white and white king if
+     * it is black
+     */
     private King oppositeKingColor() {
-        return this.currentPlayer == white ? whiteKing : blackKing;
+        return this.currentPlayer == white ? blackKing : whiteKing;
     }
 
     /**
