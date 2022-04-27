@@ -297,9 +297,11 @@ public class Game implements Model {
     /**
      * Capture position
      *
+     * Allows to determine all the positions in which a player can capture
+     * another piece.
      *
-     * @param player
-     * @return
+     * @param player is a color player
+     * @return all positions at which the player can capture another piece
      */
     private List<Position> getCapturePositions(Player player) {
         List<Position> listePos = new ArrayList();
