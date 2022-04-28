@@ -191,7 +191,7 @@ public class Board {
     public Position getPiecePosition(Piece piece) {
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
-                if (squares[i][j].getPiece().equals(piece)) {
+                if (squares[i][j].getPiece()==(piece)) {
                    
                     return new Position(i, j);
 

@@ -99,6 +99,6 @@ public interface Model {
      * @throws IllegalArgumentException moving the piece from oldPos to newPos
      * is not a possible move for the piece in question.
      */
-    public boolean IsValidMove(Position oldPos, Position newPos);
+    public boolean isValidMove(Position oldPos, Position newPos);
 
 }

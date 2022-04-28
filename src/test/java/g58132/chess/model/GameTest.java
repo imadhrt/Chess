@@ -128,5 +128,23 @@ public class GameTest {
         assertEquals(expResult, result);
 
     }
+    /**
+     * Test of isValidMove method, of class Game.
+     */
+    @Test
+    public void testIsValidMove() {
+        System.out.println("isValidMove");
+        Position oldPos = new Position(1, 5);//si je bouge de là
+        Position newPos = new Position(2, 5);//à là c'est censé me retourner false
+        Game instance = new Game();
+        instance.start();
+        instance.movePiecePosition(new Position(1, 0), new Position(2, 0));
+        instance.movePiecePosition(new Position(6, 4), new Position(5, 4));
+        instance.movePiecePosition(new Position(1, 1), new Position(2, 1));
+        instance.movePiecePosition(new Position(7, 3), new Position(3, 7));
+        boolean expResult = false;
+        boolean result = instance.isValidMove(oldPos, newPos);
+        assertEquals(expResult, result);
+    }
 
 }

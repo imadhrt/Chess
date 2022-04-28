@@ -47,10 +47,6 @@ public class Game implements Model {
     public void start() {
         this.currentPlayer = this.white;
 
-        // initialiser roi blan et noir
-        this.whiteKing = new King(Color.WHITE);
-        this.blackKing = new King(Color.BLACK);
-
         for (int colonne = 0; colonne < 8; colonne++) {
 
             optimizedStart(1, Color.WHITE);
@@ -82,11 +78,14 @@ public class Game implements Model {
         board.setPiece(new Queen(Color.WHITE), new Position(0, 3));
         //Reine Noir
         board.setPiece(new Queen(Color.BLACK), new Position(7, 3));
+        // initialiser roi blan et noir
+        this.whiteKing = new King(Color.WHITE);
+        this.blackKing = new King(Color.BLACK);
 
         //Roi Blanc
-        board.setPiece(new King(Color.WHITE), new Position(0, 4));
+        board.setPiece(whiteKing, new Position(0, 4));
         //Roi Noir
-        board.setPiece(new King(Color.BLACK), new Position(7, 4));
+        board.setPiece(blackKing, new Position(7, 4));
 
     }
 
@@ -187,7 +186,7 @@ public class Game implements Model {
                     + " la pièce située à la position actuelle  ");
 
         }
-        if (IsValidMove(oldPos, newPos)) {
+        if (isValidMove(oldPos, newPos)) {
 
             this.board.setPiece(getPiece(oldPos), newPos);
             this.board.dropPiece(oldPos);
@@ -256,7 +255,7 @@ public class Game implements Model {
      * is not a possible move for the piece in question.
      */
     @Override
-    public boolean IsValidMove(Position oldPos, Position newPos) {
+    public boolean isValidMove(Position oldPos, Position newPos) {
         boolean isNotContainsKing = true;
         if (board.isFree(oldPos)) {
             throw new IllegalArgumentException("La position départ ne contient aucune pièce");
@@ -307,7 +306,7 @@ public class Game implements Model {
         List<Position> listePos = new ArrayList();
         List<Position> pos = board.getPositionOccupiedBy(player);
         for (Position position : pos) {
-            listePos.addAll(getPossibleMoves(position));
+            listePos.addAll(this.getPiece(position).getCapturePositions(position, board));
 
         }
 

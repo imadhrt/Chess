@@ -123,6 +123,7 @@ public class TextView implements View {
 
         }
         System.out.println(" ".repeat(5) + "a    b    c    d    e    f    g    h");
+        System.out.println(model.getPiece(new Position(0,0)).getColor() == Color.BLACK);
 
     }
 
