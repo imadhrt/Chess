@@ -24,7 +24,7 @@ public class Game implements Model {
     private Player currentPlayer;
     private King whiteKing;
     private King blackKing;
-    private final GameState state;
+    private GameState state;
 
     /**
      * Constructor of game
@@ -186,13 +186,61 @@ public class Game implements Model {
                     + " la pièce située à la position actuelle  ");
 
         }
+
         if (isValidMove(oldPos, newPos)) {
 
             this.board.setPiece(getPiece(oldPos), newPos);
+            if (staleMate(oldPos, newPos)) {
+                state = GameState.STALE_MATE;
+            }
+            if ((staleMate(oldPos, newPos)) || checkKingEchec() && isValidMove(board.getPiecePosition(KingCurrentPlayer()), newPos)
+                    && isValidMove(board.getPiecePosition(KingCurrentPlayer()), newPos)) {
+                state = GameState.CHECK_MATE;
+            }
+            if (checkKingEchec() && isValidMove(board.getPiecePosition(KingCurrentPlayer()), newPos)) {
+                state = GameState.CHECK;
+
+            }
             this.board.dropPiece(oldPos);
             this.currentPlayer = getOppositePlayer();
+
         }
 
+    }
+
+    private boolean checkKingEchec() {
+        List<Position> listePos = new ArrayList();
+        List<Position> pos = board.getPositionOccupiedBy(getOppositePlayer());
+        for (Position position : pos) {
+            listePos.addAll(this.getPiece(position).getPossibleMoves(position, board));
+
+        }
+        if (listePos.contains(board.getPiecePosition(KingCurrentPlayer()))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean staleMate(Position oldPos, Position newPos) {
+
+        List<Position> listePos = new ArrayList();
+        List<Position> pos = board.getPositionOccupiedBy(getOppositePlayer());
+        for (Position position : pos) {
+            listePos.addAll(this.getPiece(position).getPossibleMoves(position, board));
+
+        }
+        if (listePos.isEmpty() || !isValidMove(oldPos, newPos)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private King KingCurrentPlayer() {
+
+        return this.currentPlayer == white ? whiteKing : blackKing;
     }
 
     /**

@@ -185,14 +185,13 @@ public class Board {
      *
      * @param piece is a piece in the game
      * @return the position if the piece passed in parameter is on the board
-     * else  null
+     * else null
      */
-
     public Position getPiecePosition(Piece piece) {
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
-                if (squares[i][j].getPiece()==(piece)) {
-                   
+                if (piece.equals(squares[i][j].getPiece())) {
+
                     return new Position(i, j);
 
                 }
