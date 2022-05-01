@@ -89,6 +89,12 @@ public class Game implements Model {
 
     }
 
+    /**
+     * Initalize pawn
+     *
+     * @param initialPos is a row on the board
+     * @param col is a color pawn
+     */
     private void optimizedStart(int initialPos, Color col) {
         for (int colonne = 0; colonne < 8; colonne++) {
             board.setPiece(new Pawn(col), new Position(initialPos, colonne));
@@ -156,7 +162,7 @@ public class Game implements Model {
 
     /**
      * Moves a piece from one position of the chess board to another one. If the
-     * game is not over, change the current player.
+     * movement is valid change the current player.
      *
      * @param oldPos the current position
      * @param newPos the new position of the board where to put the piece
@@ -190,55 +196,68 @@ public class Game implements Model {
         if (isValidMove(oldPos, newPos)) {
 
             this.board.setPiece(getPiece(oldPos), newPos);
-            if (staleMate(oldPos, newPos)) {
-                state = GameState.STALE_MATE;
-            }
-            if ((staleMate(oldPos, newPos)) || checkKingEchec() && isValidMove(board.getPiecePosition(KingCurrentPlayer()), newPos)
-                    && isValidMove(board.getPiecePosition(KingCurrentPlayer()), newPos)) {
-                state = GameState.CHECK_MATE;
-            }
-            if (checkKingEchec() && isValidMove(board.getPiecePosition(KingCurrentPlayer()), newPos)) {
-                state = GameState.CHECK;
-
-            }
             this.board.dropPiece(oldPos);
             this.currentPlayer = getOppositePlayer();
 
         }
+        if (isCheckKing()) {
+            state = GameState.CHECK;
+            if (positionValid().isEmpty()) {
+                state = GameState.CHECK_MATE;
+            }
+        } else if (positionValid().isEmpty()) {
+            state = GameState.STALE_MATE;
+
+        } else {
+            state = GameState.PLAY;
+        }
 
     }
 
-    private boolean checkKingEchec() {
+    /**
+     * Contains opposing king
+     *
+     * allows to check in the getCapture of the current player if it contains
+     * the opponent king
+     *
+     * @return true if contains opposite king otherwise false
+     */
+    private boolean isCheckKing() {
+        List<Position> pos = getCapturePositions(getOppositePlayer());
+        return pos.contains(board.getPiecePosition(kingCurrentPlayer()));
+
+    }
+
+    /**
+     * valid position in getPossibleMove
+     *
+     * allows to check in all the moves of a player if there are valid movements
+     * and add to the list
+     *
+     * @return the list of all valid movements
+     */
+    private List<Position> positionValid() {
         List<Position> listePos = new ArrayList();
-        List<Position> pos = board.getPositionOccupiedBy(getOppositePlayer());
+        List<Position> pos = board.getPositionOccupiedBy(this.currentPlayer);
         for (Position position : pos) {
-            listePos.addAll(this.getPiece(position).getPossibleMoves(position, board));
+            for (Position positionValide : this.getPiece(position).getPossibleMoves(position, board)) {
+                if (isValidMove(position, positionValide)) {
+                    listePos.add(positionValide);
 
+                }
+
+            }
         }
-        if (listePos.contains(board.getPiecePosition(KingCurrentPlayer()))) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean staleMate(Position oldPos, Position newPos) {
-
-        List<Position> listePos = new ArrayList();
-        List<Position> pos = board.getPositionOccupiedBy(getOppositePlayer());
-        for (Position position : pos) {
-            listePos.addAll(this.getPiece(position).getPossibleMoves(position, board));
-
-        }
-        if (listePos.isEmpty() || !isValidMove(oldPos, newPos)) {
-            return true;
-        }
-
-        return false;
+        return listePos;
 
     }
 
-    private King KingCurrentPlayer() {
+    /**
+     * King of the current player
+     *
+     * @return whiteKing if the current player is white otherwise blackKing
+     */
+    private King kingCurrentPlayer() {
 
         return this.currentPlayer == white ? whiteKing : blackKing;
     }
@@ -246,21 +265,11 @@ public class Game implements Model {
     /**
      * Check if the game is over or not
      *
-     * @return true if the game is over, false otherwise.
+     * @return true if the game is in stale mate or check mate otherwise false.
      */
     @Override
     public boolean isGameOver() {
-        List<Position> listePos = this.board.getPositionOccupiedBy(this.currentPlayer);
-        boolean gameOver = true;
-        for (int i = 0; i < listePos.size() && gameOver; i++) {
-            Position pos = listePos.get(i);
-            if (!this.getPossibleMoves(pos).isEmpty()) {
-                gameOver = false;
-
-            }
-
-        }
-        return gameOver;
+        return state == GameState.STALE_MATE || state == GameState.CHECK_MATE;
 
     }
 
@@ -304,7 +313,7 @@ public class Game implements Model {
      */
     @Override
     public boolean isValidMove(Position oldPos, Position newPos) {
-        boolean isNotContainsKing = true;
+        boolean isContainsKing = true;
         if (board.isFree(oldPos)) {
             throw new IllegalArgumentException("La position départ ne contient aucune pièce");
         }
@@ -312,20 +321,26 @@ public class Game implements Model {
             throw new IllegalArgumentException("Le coup n'est pas valable pour "
                     + " la pièce située à la position actuelle  ");
         }
-
-        this.board.setPiece(getPiece(oldPos), newPos);
-        this.board.dropPiece(oldPos);
-        this.currentPlayer = getOppositePlayer();
-
-        if (getCapturePositions(this.currentPlayer).contains(board.getPiecePosition(oppositeKingColor()))) {
-            isNotContainsKing = false;
-
+        Piece stockOldPos = getPiece(oldPos);//pour sauvegarder la oldpos car après on drop olpos
+        Piece replacedPiece = board.getPiece(newPos); //on verifie si newPos ne contient pas nulle
+        //et pas de la même de la couleur et dans ce cas on dropPiece
+        if (replacedPiece != null) {
+            board.dropPiece(newPos);
         }
-        this.board.setPiece(getPiece(newPos), oldPos);
-        this.board.dropPiece(newPos);
-        this.currentPlayer = getOppositePlayer();
+        //je simule la piece
 
-        return isNotContainsKing;
+        this.board.setPiece(stockOldPos, newPos);
+        this.board.dropPiece(oldPos);
+
+        if (getCapturePositions(getOppositePlayer()).contains(board.getPiecePosition(kingCurrentPlayer()))) {// verifie si contient le roi courant dans les getCapptures du joueur opposé
+            isContainsKing = false;
+        }
+        //je remet les piece à l'initial
+        this.board.setPiece(stockOldPos, oldPos);
+        this.board.dropPiece(newPos);
+        board.setPiece(replacedPiece, newPos);
+
+        return isContainsKing;
 
     }
 
@@ -337,10 +352,6 @@ public class Game implements Model {
      * @return the black king if the current player is white and white king if
      * it is black
      */
-    private King oppositeKingColor() {
-        return this.currentPlayer == white ? blackKing : whiteKing;
-    }
-
     /**
      * Capture position
      *
