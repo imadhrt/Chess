@@ -314,7 +314,7 @@ public class TextView implements View {
     @Override
 
     public void displayCheckMate() {
-        System.out.println("Vous avez mis le joueur adverse en èchec et math.");
+        System.out.println("Vous avez mis le joueur adverse en Echec et Mat.");
 
     }
 
@@ -325,7 +325,7 @@ public class TextView implements View {
     @Override
 
     public void displayStaleMate() {
-        System.out.println("La partie est nulle.");
+        System.out.println("La partie se termine par un match nulle.");
 
     }
 

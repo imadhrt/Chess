@@ -210,9 +210,6 @@ public class Game implements Model {
                 state = GameState.PLAY;
             }
 
-        } else {
-            System.out.println("Le mouvement n'est pas valide"
-                    + " car vous mettez votre propre roi en échec");
         }
 
     }
