@@ -152,7 +152,7 @@ public class GameTest {
      * Test of the Lion Mat.
      */
     @Test
-    public void testLionMatWhite() {
+    public void testLionMatKingWhite() {
         System.out.println("testLionMat");
         Game instance = new Game();
         instance.start();
@@ -170,7 +170,7 @@ public class GameTest {
      * Test of the Lion Mat black.
      */
     @Test
-    public void testLionMatBlack() {
+    public void testLionMatKingBlack() {
         System.out.println("testLionMat");
         Game instance = new Game();
         instance.start();

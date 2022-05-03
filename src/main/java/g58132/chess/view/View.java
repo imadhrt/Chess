@@ -50,7 +50,21 @@ public interface View {
      *
      * @param message is a message
      */
-
     public void displayMessage(String message);
+
+    /**
+     * Displays the message of StaleMate
+     */
+    public void displayStaleMate();
+
+    /**
+     * Displays the message of CheckMate
+     */
+    public void displayCheckMate();
+
+    /**
+     * Displays the message of Check
+     */
+    public void displayCheck();
 
 }

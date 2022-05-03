@@ -198,19 +198,23 @@ public class Game implements Model {
             this.board.setPiece(getPiece(oldPos), newPos);
             this.board.dropPiece(oldPos);
             this.currentPlayer = getOppositePlayer();
+            if (isCheckKing()) {
+                state = GameState.CHECK;
+                if (positionValid().isEmpty()) {
+                    state = GameState.CHECK_MATE;
+                }
+            } else if (positionValid().isEmpty()) {
+                state = GameState.STALE_MATE;
 
-        }
-        if (isCheckKing()) {
-            state = GameState.CHECK;
-            if (positionValid().isEmpty()) {
-                state = GameState.CHECK_MATE;
+            } else {
+                state = GameState.PLAY;
             }
-        } else if (positionValid().isEmpty()) {
-            state = GameState.STALE_MATE;
 
         } else {
-            state = GameState.PLAY;
+            System.out.println("Le mouvement n'est pas valide"
+                    + " car vous mettez votre propre roi en échec");
         }
+
     }
 
     /**

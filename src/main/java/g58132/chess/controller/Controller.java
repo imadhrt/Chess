@@ -1,5 +1,6 @@
 package g58132.chess.controller;
 
+import g58132.chess.model.GameState;
 import g58132.chess.model.Model;
 import g58132.chess.model.Position;
 import g58132.chess.view.View;
@@ -49,6 +50,10 @@ public class Controller {
                     Position newPosition = view.askPosition();
 
                     game.movePiecePosition(oldPosition, newPosition);
+                    if (game.getState() == GameState.CHECK) {
+                        view.displayCheck();
+                        
+                    }
 
                 }
             } catch (Exception e) {
@@ -57,11 +62,21 @@ public class Controller {
             }
 
             if (game.isGameOver()) {
+                if (game.getState() == GameState.STALE_MATE) {
+                    view.displayStaleMate();
+
+                } else {
+                    view.displayCheckMate();
+
+                }
                 gameIsOver = true;
             }
 
         }
-        view.displayWinner();
+
+        if (game.getState() == GameState.CHECK_MATE) {
+            view.displayWinner();
+        }
     }
 
 }

@@ -296,6 +296,39 @@ public class TextView implements View {
         System.out.println(message);
     }
 
+    /**
+     * Displays the message of Check
+     */
+
+    @Override
+
+    public void displayCheck() {
+        System.out.println("Vous avez mis le joueur adverse en èchec");
+
+    }
+
+    /**
+     * Displays the message of CheckMate
+     */
+
+    @Override
+
+    public void displayCheckMate() {
+        System.out.println("Vous avez mis le joueur adverse en èchec et math.");
+
+    }
+
+    /**
+     * Displays the message of StaleMate
+     */
+
+    @Override
+
+    public void displayStaleMate() {
+        System.out.println("La partie est nulle.");
+
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -320,6 +353,5 @@ public class TextView implements View {
         }
         return true;
     }
-
 
 }
