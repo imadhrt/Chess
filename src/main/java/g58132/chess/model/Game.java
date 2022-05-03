@@ -211,7 +211,6 @@ public class Game implements Model {
         } else {
             state = GameState.PLAY;
         }
-
     }
 
     /**
@@ -321,14 +320,15 @@ public class Game implements Model {
             throw new IllegalArgumentException("Le coup n'est pas valable pour "
                     + " la pièce située à la position actuelle  ");
         }
-        Piece stockOldPos = getPiece(oldPos);//pour sauvegarder la oldpos car après on drop olpos
+
         Piece replacedPiece = board.getPiece(newPos); //on verifie si newPos ne contient pas nulle
         //et pas de la même de la couleur et dans ce cas on dropPiece
-        if (replacedPiece != null) {
+        if (replacedPiece != null && replacedPiece.getColor() != this.currentPlayer.getColor()) {
             board.dropPiece(newPos);
         }
-        //je simule la piece
+        Piece stockOldPos = getPiece(oldPos); //pour sauvegarder la oldpos car après on drop olpos
 
+        //je simule la piece
         this.board.setPiece(stockOldPos, newPos);
         this.board.dropPiece(oldPos);
 
