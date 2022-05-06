@@ -198,7 +198,7 @@ public class Game implements Model {
             this.board.setPiece(getPiece(oldPos), newPos);
             this.board.dropPiece(oldPos);
             this.currentPlayer = getOppositePlayer();
-            if (isCheckKing()) {
+               if (isCheckKing()) {
                 state = GameState.CHECK;
                 if (positionValid().isEmpty()) {
                     state = GameState.CHECK_MATE;
@@ -210,9 +210,8 @@ public class Game implements Model {
                 state = GameState.PLAY;
             }
 
-        }
 
-    }
+        }}
 
     /**
      * Contains opposing king
@@ -322,9 +321,9 @@ public class Game implements Model {
                     + " la pièce située à la position actuelle  ");
         }
 
-        Piece replacedPiece = board.getPiece(newPos); //on verifie si newPos ne contient pas nulle
+        Piece stockNexpos = board.getPiece(newPos); //on verifie si newPos ne contient pas nulle
         //et pas de la même de la couleur et dans ce cas on dropPiece
-        if (replacedPiece != null && replacedPiece.getColor() != this.currentPlayer.getColor()) {
+        if (stockNexpos != null && stockNexpos.getColor() != this.currentPlayer.getColor()) {
             board.dropPiece(newPos);
         }
         Piece stockOldPos = getPiece(oldPos); //pour sauvegarder la oldpos car après on drop olpos
@@ -339,7 +338,7 @@ public class Game implements Model {
         //je remet les piece à l'initial
         this.board.setPiece(stockOldPos, oldPos);
         this.board.dropPiece(newPos);
-        board.setPiece(replacedPiece, newPos);
+        board.setPiece(stockNexpos, newPos);
 
         return isContainsKing;
 

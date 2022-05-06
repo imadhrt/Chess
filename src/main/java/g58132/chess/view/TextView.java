@@ -299,33 +299,30 @@ public class TextView implements View {
     /**
      * Displays the message of Check
      */
-
     @Override
 
     public void displayCheck() {
-        System.out.println("Vous avez mis le joueur adverse en èchec");
+        System.out.println("Vous avez mis le joueur adverse en ECHEC");
 
     }
 
     /**
      * Displays the message of CheckMate
      */
-
     @Override
 
     public void displayCheckMate() {
-        System.out.println("Vous avez mis le joueur adverse en Echec et Mat.");
+        System.out.println("Vous avez mis le joueur adverse en ECHEC et MAT.");
 
     }
 
     /**
      * Displays the message of StaleMate
      */
-
     @Override
 
     public void displayStaleMate() {
-        System.out.println("La partie se termine par un match nulle.");
+        System.out.println("La partie se termine par un match NUL.");
 
     }
 

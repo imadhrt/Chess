@@ -85,9 +85,6 @@ public abstract class Piece {
      */
     public List<Position> getCapturePositions(Position position, Board board) {
         return getPossibleMoves(position, board);
-//                .stream()
-//                .filter(pos -> !board.isFree(pos))
-//                .collect(Collectors.toList());
 
     }
 

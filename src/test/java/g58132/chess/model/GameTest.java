@@ -135,8 +135,8 @@ public class GameTest {
     @Test
     public void testIsValidMove() {
         System.out.println("isValidMove");
-        Position oldPos = new Position(1, 5);//si je bouge de là
-        Position newPos = new Position(2, 5);//à là c'est censé me retourner false
+        Position oldPos = new Position(1, 5);
+        Position newPos = new Position(2, 5);
         Game instance = new Game();
         instance.start();
         instance.movePiecePosition(new Position(1, 0), new Position(2, 0));
@@ -246,7 +246,7 @@ public class GameTest {
     }
     @Test
     public void teststaleMate() {
-        System.out.println("testCheckState");
+        System.out.println("testStaleMate");
         Game instance = new Game();
         instance.start();
 

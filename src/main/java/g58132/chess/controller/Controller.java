@@ -11,7 +11,7 @@ import g58132.chess.view.View;
  * @author elhar
  */
 public class Controller {
-    
+
     private final Model game;
     private final View view;
 
@@ -26,7 +26,7 @@ public class Controller {
     public Controller(Model model, View view) {
         this.game = model;
         this.view = view;
-        
+
     }
 
     /**
@@ -34,10 +34,10 @@ public class Controller {
      */
     public void play() {
         boolean gameIsOver = false;
-        
+
         view.displayTitle();
         game.start();
-        
+
         while (!gameIsOver) {
             view.displayBoard();
             view.displayPlayer();
@@ -52,35 +52,34 @@ public class Controller {
                         view.displayMessage("Le mouvement n'est pas valide"
                                 + "car vous mettez votre propre roi en échec");
                     }
-                    
+
                     game.movePiecePosition(oldPosition, newPosition);
                     if (game.getState() == GameState.CHECK) {
                         view.displayCheck();
-                        
+
                     }
-                    
+
                 }
             } catch (Exception e) {
-                
+
                 view.displayError(e.getMessage());
             }
-            
+
             if (game.isGameOver()) {
                 if (game.getState() == GameState.STALE_MATE) {
                     view.displayStaleMate();
                     
+
                 } else {
                     view.displayCheckMate();
-                    
+                    view.displayWinner();
+
                 }
                 gameIsOver = true;
             }
-            
+
         }
-        
-        if (game.getState() == GameState.CHECK_MATE) {
-            view.displayWinner();
-        }
+
     }
-    
+
 }
