@@ -312,7 +312,7 @@ public class TextView implements View {
     @Override
 
     public void displayCheckMate() {
-        System.out.println("Vous avez mis le joueur adverse en ECHEC et MAT.");
+        System.out.println("Vous avez mis le joueur adverse en ÉCHECS et MAT.");
 
     }
 
