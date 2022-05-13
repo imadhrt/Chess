@@ -1,5 +1,6 @@
 package g58132.chess.model;
 
+import g58132.chess.model.pieces.Pawn;
 import g58132.chess.model.pieces.Piece;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -201,6 +202,28 @@ public class Board {
         }
         return null;
 
+    }
+        public Position pawnBlack(){
+        for (int i = 0; i < squares[0].length; i++) {
+            if(squares[0][i].getPiece() instanceof Pawn &&squares[0][i].getPiece().getColor()==Color.BLACK) {
+                 return new Position(0, i);
+            }
+      
+            
+            
+        }
+        return null;
+    }
+        public Position pawnWhite(){
+        for (int i = 0; i < squares[0].length; i++) {
+            if(squares[7][i].getPiece() instanceof Pawn &&squares[7][i].getPiece().getColor()==Color.WHITE) {
+                 return new Position(7, i);
+            }
+      
+            
+            
+        }
+        return null;
     }
 
     /**

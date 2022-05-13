@@ -245,6 +245,81 @@ public class GameTest {
         assertEquals(expGameState, result);
     }
     @Test
+    public void testPromotionPionBlanc() {
+        Game instance = new Game();
+        instance.start();
+
+        instance.movePiecePosition(new Position(1, 0), new Position(3, 0));
+        instance.movePiecePosition(new Position(6, 3), new Position(5, 3));
+        instance.movePiecePosition(new Position(3, 0), new Position(4, 0));
+        instance.movePiecePosition(new Position(5, 3), new Position(4, 3));
+        instance.movePiecePosition(new Position(4, 0), new Position(5, 0));
+        instance.movePiecePosition(new Position(4, 3), new Position(3, 3));
+        instance.movePiecePosition(new Position(5, 0), new Position(6, 1));
+        instance.movePiecePosition(new Position(6, 7), new Position(5, 7));
+        instance.movePiecePosition(new Position(6, 1), new Position(7, 0));
+          Board board = new Board();
+        Position exp = new Position(7, 0);
+        Position res = board.pawnWhite();
+        assertEquals(exp, res);
+
+        GameState expGameState = GameState.PLAY;
+        GameState result = instance.getState();
+
+        assertEquals(expGameState, result);
+    }
+    @Test
+    public void testNonPromotionPionBlanc() {
+        Game instance = new Game();
+        instance.start();
+
+        instance.movePiecePosition(new Position(1, 0), new Position(3, 0));
+        instance.movePiecePosition(new Position(6, 3), new Position(5, 3));
+        instance.movePiecePosition(new Position(3, 0), new Position(4, 0));
+        instance.movePiecePosition(new Position(5, 3), new Position(4, 3));
+        instance.movePiecePosition(new Position(4, 0), new Position(5, 0));
+        instance.movePiecePosition(new Position(4, 3), new Position(3, 3));
+        instance.movePiecePosition(new Position(5, 0), new Position(6, 1));
+        instance.movePiecePosition(new Position(6, 7), new Position(5, 7));
+        instance.movePiecePosition(new Position(1, 7), new Position(2, 7));
+          Board board = new Board();
+        Position exp = null;
+        Position res = board.pawnWhite();
+        assertEquals(exp, res);
+
+        GameState expGameState = GameState.PLAY;
+        GameState result = instance.getState();
+
+        assertEquals(expGameState, result);
+    }
+    @Test
+    public void testNonPromotionPionNoir() {
+        Game instance = new Game();
+        instance.start();
+
+        instance.movePiecePosition(new Position(1, 0), new Position(3, 0));
+        instance.movePiecePosition(new Position(6, 3), new Position(5, 3));
+        instance.movePiecePosition(new Position(3, 0), new Position(4, 0));
+        instance.movePiecePosition(new Position(5, 3), new Position(4, 3));
+        instance.movePiecePosition(new Position(4, 0), new Position(5, 0));
+        instance.movePiecePosition(new Position(4, 3), new Position(3, 3));
+        instance.movePiecePosition(new Position(5, 0), new Position(6, 1));
+        instance.movePiecePosition(new Position(3,3), new Position(2, 3));
+        instance.movePiecePosition(new Position(0, 0), new Position(1, 0));
+        instance.movePiecePosition(new Position(2, 3), new Position(1, 2));
+        instance.movePiecePosition(new Position(1, 0), new Position(0, 0));
+        instance.movePiecePosition(new Position(1, 2), new Position(0, 1));
+          Board board = new Board();
+        Position exp = null;
+        Position res = board.pawnWhite();
+        assertEquals(exp, res);
+
+        GameState expGameState = GameState.PLAY;
+        GameState result = instance.getState();
+
+        assertEquals(expGameState, result);
+    }
+    @Test
     public void teststaleMate() {
         System.out.println("testStaleMate");
         Game instance = new Game();
@@ -359,5 +434,21 @@ public class GameTest {
         GameState result = instance.getState();
         assertEquals(expGameState, result);
     }
+    @Test
+    public void testMovePiecePosition(){
+   
+        System.out.println("movePiecePosition");
+         Board board = new Board();
+        Piece instance = new Pawn(Color.WHITE);
+          Position position2 = new Position(6,0 );
+          board.setPiece(instance, position2);
+      
+        Position oldPos = new Position(6, 0);
+        Position newPos =new Position(7, 0);
+        Game game = new Game();
+        game.movePiecePosition(oldPos, newPos);
+
+    }
+    
 
 }

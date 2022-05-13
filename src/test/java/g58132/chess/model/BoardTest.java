@@ -2,6 +2,7 @@
 package g58132.chess.model;
 
 import g58132.chess.model.pieces.Pawn;
+import g58132.chess.model.pieces.Piece;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -226,5 +227,193 @@ public class BoardTest {
         assertEquals(expected.size(), actual.size());
         assertTrue(actual.containsAll(expected));
         assertTrue(expected.containsAll(actual));
+    }
+
+    /**
+     * Test of contains method, of class Board.
+     */
+    @Test
+    public void testContains() {
+        System.out.println("contains");
+        Position pos = null;
+        Board instance = new Board();
+        boolean expResult = false;
+        boolean result = instance.contains(pos);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getInitialPawnRow method, of class Board.
+     */
+    @Test
+    public void testGetInitialPawnRow() {
+        System.out.println("getInitialPawnRow");
+        Color color = null;
+        Board instance = new Board();
+        int expResult = 0;
+        int result = instance.getInitialPawnRow(color);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setPiece method, of class Board.
+     */
+    @Test
+    public void testSetPiece() {
+        System.out.println("setPiece");
+        Piece piece = null;
+        Position position = null;
+        Board instance = new Board();
+        instance.setPiece(piece, position);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getPiece method, of class Board.
+     */
+    @Test
+    public void testGetPiece() {
+        System.out.println("getPiece");
+        Position pos = null;
+        Board instance = new Board();
+        Piece expResult = null;
+        Piece result = instance.getPiece(pos);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of dropPiece method, of class Board.
+     */
+    @Test
+    public void testDropPiece() {
+        System.out.println("dropPiece");
+        Position pos = null;
+        Board instance = new Board();
+        instance.dropPiece(pos);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of isFree method, of class Board.
+     */
+    @Test
+    public void testIsFree() {
+        System.out.println("isFree");
+        Position pos = null;
+        Board instance = new Board();
+        boolean expResult = false;
+        boolean result = instance.isFree(pos);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of containsOppositeColor method, of class Board.
+     */
+    @Test
+    public void testContainsOppositeColor() {
+        System.out.println("containsOppositeColor");
+        Position pos = null;
+        Color col = null;
+        Board instance = new Board();
+        boolean expResult = false;
+        boolean result = instance.containsOppositeColor(pos, col);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getPositionOccupiedBy method, of class Board.
+     */
+    @Test
+    public void testGetPositionOccupiedBy() {
+        System.out.println("getPositionOccupiedBy");
+        Player player = null;
+        Board instance = new Board();
+        List<Position> expResult = null;
+        List<Position> result = instance.getPositionOccupiedBy(player);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getPiecePosition method, of class Board.
+     */
+    @Test
+    public void testGetPiecePosition() {
+        System.out.println("getPiecePosition");
+        Piece piece = null;
+        Board instance = new Board();
+        Position expResult = null;
+        Position result = instance.getPiecePosition(piece);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of pawnBlack method, of class Board.
+     */
+    @Test
+    public void testPawnBlack() {
+        System.out.println("pawnBlack");
+        Board instance = new Board();
+        Position expResult = new Position(7, 0);
+        Position result = instance.pawnBlack();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of pawnWhite method, of class Board.
+     */
+    @Test
+    public void testPawnWhite() {
+        System.out.println("pawnWhite");
+        Board instance = new Board();
+        Position expResult = null;
+        Position result = instance.pawnWhite();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of equals method, of class Board.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        Object obj = null;
+        Board instance = new Board();
+        boolean expResult = false;
+        boolean result = instance.equals(obj);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of hashCode method, of class Board.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        Board instance = new Board();
+        int expResult = 0;
+        int result = instance.hashCode();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 }
