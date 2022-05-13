@@ -341,38 +341,22 @@ public class GameTest {
         instance.movePiecePosition(new Position(4, 2), new Position(0, 2));
 
         instance.movePiecePosition(new Position(3, 6), new Position(3, 7));
-
         instance.movePiecePosition(new Position(0, 2), new Position(0, 1));
-
         instance.movePiecePosition(new Position(3, 7), new Position(3, 5));
-
         instance.movePiecePosition(new Position(0, 1), new Position(0, 3));
-
         instance.movePiecePosition(new Position(0, 4), new Position(1, 4));
-
         instance.movePiecePosition(new Position(0, 3), new Position(0, 5));
-
         instance.movePiecePosition(new Position(3, 5), new Position(3, 3));
-
         instance.movePiecePosition(new Position(0, 5), new Position(0, 6));
-
         instance.movePiecePosition(new Position(3, 3), new Position(3, 1));
-
         instance.movePiecePosition(new Position(0, 6), new Position(0, 7));
-
         instance.movePiecePosition(new Position(3, 1), new Position(3, 7));
-
         instance.movePiecePosition(new Position(0, 7), new Position(3, 7));
-
         instance.movePiecePosition(new Position(1, 4), new Position(2, 4));
-
         instance.movePiecePosition(new Position(3, 7), new Position(3, 4));
-
         instance.movePiecePosition(new Position(2, 4), new Position(3, 4));
-
         GameState expGameState = GameState.PLAY;
         GameState result = instance.getState();
-
         assertEquals(expGameState, result);
     }
 

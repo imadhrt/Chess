@@ -198,6 +198,17 @@ public class Game implements Model {
             this.board.setPiece(getPiece(oldPos), newPos);
             this.board.dropPiece(oldPos);
             this.currentPlayer = getOppositePlayer();
+            Position posPawnWhite=board.pawnWhite();
+            if(posPawnWhite!=null){
+                board.dropPiece(posPawnWhite);
+                board.setPiece(new Queen(Color.WHITE), posPawnWhite);
+            }
+            Position  posPawnBlack=board.pawnBlack();
+            if(posPawnBlack!=null){
+                board.dropPiece(posPawnBlack);
+                board.setPiece(new Queen(Color.BLACK), posPawnBlack);
+            }
+           
                if (isCheckKing()) {
                 state = GameState.CHECK;
                 if (positionValid().isEmpty()) {

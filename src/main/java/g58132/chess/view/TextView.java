@@ -166,9 +166,9 @@ public class TextView implements View {
      */
     @Override
     public Position askPosition() {
+
         int row = LectureRobusteEntreMinEtMax(1, 8) - 1;//-1 car le tableau commence à 0
         int column = lectureRobusteChar();
-
         return new Position(row, column);
     }
 
